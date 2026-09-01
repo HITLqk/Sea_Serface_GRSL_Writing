@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  1 SEP 2026 23:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  1 SEP 2026 23:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -135,25 +135,37 @@ LaTeX Warning: Citation `melief2006seaspikes' on page 1 undefined on input line 
 LaTeX Warning: Citation `rosenberg2013seaspike' on page 1 undefined on input line 6.
 
 
-LaTeX Warning: Citation `holliday1998steepening' on page 1 undefined on input line 6.
-
-
-LaTeX Warning: Citation `sletten2003breaking' on page 1 undefined on input line 6.
-
-
-LaTeX Warning: Citation `west2002plunging' on page 1 undefined on input line 6.
-
-
 LaTeX Warning: Citation `elfouhaily1997unified' on page 1 undefined on input line 8.
+
+
+LaTeX Warning: Citation `zhang2023secondorder' on page 1 undefined on input line 8.
+
+
+LaTeX Warning: Citation `xie2024skewness' on page 1 undefined on input line 8.
+
+
+LaTeX Warning: Citation `xie2022convolutions' on page 1 undefined on input line 8.
+
+
+LaTeX Warning: Citation `ye2022improvedTSM' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Citation `holliday1998steepening' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Citation `sletten2003breaking' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Citation `west2002plunging' on page 1 undefined on input line 10.
 
 
 LaTeX Warning: Citation `west1998mmgtd' on page 1 undefined on input line 10.
 
 
 LaTeX Warning: Citation `west1999ray' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `west2002plunging' on page 1 undefined on input line 10.
 
 
 LaTeX Warning: Citation `west2002multipath' on page 1 undefined on input line 10.
@@ -171,24 +183,6 @@ LaTeX Warning: Citation `li2017facet' on page 1 undefined on input line 10.
 LaTeX Warning: Citation `dong2023plunging' on page 1 undefined on input line 10.
 
 
-
-
-LaTeX Warning: Citation `plant2003return' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `wentz1984sass' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `hersbach2007cmod5' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `carretero2010statistical' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `fiche2015xband' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `bocquet2022lga' on page 1 undefined on input line 14.
 
 ) (./00_main.bbl
 
@@ -219,18 +213,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 1280 strings out of 473190
- 25692 string characters out of 5716852
- 429989 words of memory out of 5000000
+ 1279 strings out of 473190
+ 25685 string characters out of 5716852
+ 428989 words of memory out of 5000000
  24592 multiletter control sequences out of 15000+600000
- 586175 words of font info for 78 fonts, out of 8000000 for 9000
+ 585039 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,6n,50p,1360b,167s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_main.pdf (1 page, 45006 bytes).
+ 36i,6n,50p,1400b,167s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on 00_main.pdf (1 page, 38310 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 24 PDF objects out of 1000 (max. 8388607)
+ 14 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
