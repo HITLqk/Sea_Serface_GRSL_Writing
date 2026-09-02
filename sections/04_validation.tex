@@ -1,0 +1,246 @@
+\section{Validation and Results}
+\label{sec:validation_results}
+
+Validation proceeds from global surface statistics to localized curling-wave geometry and scattering, and finally to full-scene radar signatures and computational efficiency. Accordingly, the evaluation is organized into five levels: large-area slope statistics, local curling-wave geometry, local electromagnetic scattering, full-scene radar echoes, and computational scalability.
+
+
+
+\subsection{Global Surface Statistical Validation}
+\label{subsec:global_surface_validation}
+
+This subsection examines whether the generated large-area surfaces retain physically plausible wind-dependent roughness before the localized curling operation is introduced. Three related questions are separated: whether the multiscale linear generator recovers the mean-square slope (MSS) implied by its input Elfouhaily spectrum, whether the MSS-constrained nonlinear surface remains consistent with observation-based low- and moderate-wind slope statistics, and whether its total MSS exhibits a plausible flattening trend under high sea states. The second comparison is a constraint-compliance test rather than a fully independent prediction test because the accepted implementation uses Cox--Munk, Hu/TGRS, and Gu\'erin data to construct the nonlinear MSS target; the subsequent geometry and electromagnetic tests therefore provide the independent evidence for the nonlinear structures.
+
+Let $\widehat{\eta}(\boldsymbol{k})$ denote the Fourier coefficient of a synthesized surface, and let $k_a$ and $k_c$ be the along- and cross-wind wavenumber components defined in Section~II. The directional and total MSSs and the anisotropy factor are calculated directly from the resolved spectral coefficients as
+\begin{equation}
+\begin{aligned}
+m_a&=\sum_{\boldsymbol{k}}k_a^2\left|\widehat{\eta}(\boldsymbol{k})\right|^2,
+&m_c&=\sum_{\boldsymbol{k}}k_c^2\left|\widehat{\eta}(\boldsymbol{k})\right|^2,\\
+m_t&=m_a+m_c,
+&\gamma&=\left(\frac{m_c}{m_a}\right)^{1/2}.
+\end{aligned}
+\label{eq:validation_mss_metrics}
+\end{equation}
+The primary grid uses $\Delta k=k_p/12$ and resolves nonlinear interactions up to $8k_p$. Independent octave tiles then represent the unresolved short-wave bands up to $k_{\max}=1000\pi~\mathrm{rad/m}$. Because the tiles occupy disjoint wavenumber bands, their slope variances are added to the primary-band moments. This multiscale construction includes the gravity--capillary contribution needed for comparison with optical-scale slope statistics without requiring one millimeter-spaced grid over the entire sea-surface domain.
+
+For the low- and moderate-wind experiment, the Cox--Munk reference is evaluated after converting the simulated 10-m wind speed to the 12.5-m wind convention, $U_{12.5}=U_{10}/0.98$. Its directional components are~\cite{cox1954measurement}
+\begin{equation}
+\begin{aligned}
+m_{a,\mathrm{CM}}&=3.16\times10^{-3}U_{12.5},\\
+m_{c,\mathrm{CM}}&=3.00\times10^{-3}+1.92\times10^{-3}U_{12.5}.
+\end{aligned}
+\label{eq:cox_munk_directional_mss}
+\end{equation}
+The comparison additionally includes the direction-resolved IASI values reported by Gu\'erin over their available wind interval and the Hu total-MSS parameterization and representative anisotropy summarized in the generalized slope model~\cite{guerin2023seasurfaceslope,gao2024generalized}. These references are retained separately in the plots; their component-wise arithmetic mean is used only as the accepted implementation's low- and moderate-wind constraint target. Denoting this target by $m_{q,\mathrm{tar}}$ and the uncorrected Modified-Lie moment by $m_{q,\mathrm{raw}}$, the desired moment of each realization is
+\begin{equation}
+m_{q,\mathrm{des}}=m_{q,\mathrm{tar}}\left(\frac{m_{q,\mathrm{raw}}}{m_{q,\mathrm{tar}}}\right)^{\rho},\qquad q\in\{a,c\},
+\label{eq:mss_log_domain_contraction}
+\end{equation}
+where $\rho=0.15$ retains part of the realization-to-realization deviation. The positive angular dressing in Section~II is then solved to realize $m_{a,\mathrm{des}}$ and $m_{c,\mathrm{des}}$ without changing Fourier phase. The reported groups are therefore a linear Elfouhaily baseline and an MSS-constrained Modified-Lie surface generated with identical random coefficients.
+
+Wind speed is varied from $1$ to $10~\mathrm{m/s}$ in $1~\mathrm{m/s}$ increments, with 20 paired realizations at every wind speed. At each condition, the median is used as the central estimate; the 5th--95th percentile interval and interquartile range describe Monte Carlo dispersion. Agreement with a reference curve $r_i$ is summarized by
+\begin{equation}
+\operatorname{RMSE}=\left[\frac{1}{N_U}\sum_{i=1}^{N_U}\left(\widetilde{m}_{t,i}-r_i\right)^2\right]^{1/2},
+\label{eq:mss_rmse}
+\end{equation}
+where $\widetilde{m}_{t,i}$ is the median total MSS at the $i$th wind speed. Directional consistency is assessed independently through the mean absolute deviation of $\widetilde{\gamma}$ from the TGRS reference value.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][5.0cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for low- and moderate-wind global statistics}\\[5pt] (a) Total MSS of the linear Elfouhaily group, including 5th--95th percentile and interquartile bands, the numerical Elfouhaily integral, Cox--Munk, Hu/TGRS, Gu\'erin IASI, and the empirical fusion target.\\[3pt] (b) Corresponding total MSS of the MSS-constrained Modified-Lie group.\\[3pt] (c) Anisotropy factor $\gamma$ for both groups and the available reference values.}}
+\caption{Global slope statistics for $U_{10}=1$--$10~\mathrm{m/s}$ using 20 paired realizations per wind speed. The fusion curve is the constraint target and is not treated as an additional independent observation.}
+\label{fig:global_mss_low_wind}
+\end{figure*}
+
+As shown by the results reserved for Fig.~\ref{fig:global_mss_low_wind}, the linear realizations closely reproduce the numerical integral of the implemented Elfouhaily spectrum, with an RMSE of $7.53\times10^{-4}$. This confirms the self-consistency of the spectral sampling, octave-band accumulation, and MSS calculation. Their total MSS nevertheless increasingly exceeds the Cox--Munk and Gu\'erin references toward the upper end of the interval: the median rises from 0.01846 at $1~\mathrm{m/s}$ to 0.06156 at $10~\mathrm{m/s}$, whereas the corresponding Cox--Munk values are 0.00818 and 0.05484. After directional moment contraction, the nonlinear medians become 0.01221 and 0.05547, respectively, and remain monotonic over the complete wind interval.
+
+The quantitative errors exhibit the same behavior. Relative to the linear baseline, the constrained nonlinear group reduces the total-MSS RMSE from 0.00560 to 0.00223 against Cox--Munk, from 0.00523 to 0.00188 against the available Gu\'erin values, and from 0.00383 to 0.00227 against the Hu/TGRS law. Its RMSE relative to the fusion target is $6.28\times10^{-4}$, compared with 0.00456 for the linear group. The mean absolute anisotropy error relative to the TGRS value decreases from 0.04699 to 0.02678. The constrained $\gamma$ changes from 0.948 at $1~\mathrm{m/s}$ to 0.841 at $10~\mathrm{m/s}$; its elevated low-wind value follows partly from the constant crosswind term in the Cox--Munk law and should therefore be interpreted as a property of the adopted directional constraint rather than as an independently predicted nonlinear-wave effect.
+
+The high-sea-state experiment tests a different statistical behavior and does not extrapolate the Cox--Munk linear law into hurricane-force winds. For $U_{10}\geq13.3~\mathrm{m/s}$, the accepted implementation adopts the logarithmic Hu/TGRS branch
+\begin{equation}
+m_{t,\mathrm{Hu}}=0.138\log_{10}U_{10}-0.084,
+\label{eq:hu_high_wind_mss}
+\end{equation}
+while the lower part of this experiment uses its adjacent linear branch. The test covers $U_{10}=10:2:40~\mathrm{m/s}$ with 20 paired realizations per condition and retains $\rho=0.05$. In addition to the linear and constrained groups, the raw Modified-Lie result is reported to expose the effect of the statistical constraint. High-wind behavior is measured by the RMSE to the Hu/TGRS target, the ratio between the mean tail slope above $24~\mathrm{m/s}$ and the early slope below $16~\mathrm{m/s}$, and the fraction of successive slope intervals that are concave.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][4.2cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for high-sea-state MSS validation}\\[5pt] (a) Median total MSS for the linear Elfouhaily, raw Modified-Lie, and MSS-constrained Modified-Lie groups, together with the Hu/TGRS law, the integrated Elfouhaily result, and the 5th--95th percentile band of the constrained group.\\[3pt] (b) Finite-difference slope $\mathrm{d}(\mathrm{MSS})/\mathrm{d}U_{10}$ showing the progressive high-wind flattening.}}
+\caption{High-sea-state total MSS and its wind-speed derivative for $U_{10}=10$--$40~\mathrm{m/s}$.}
+\label{fig:global_mss_high_wind}
+\end{figure*}
+
+The high-wind results reserved for Fig.~\ref{fig:global_mss_high_wind} show that the raw Modified-Lie correction alone changes the total MSS only slightly and yields an RMSE of 0.00911, compared with 0.00900 for the linear realizations and 0.00757 for the continuous Elfouhaily integral. The constrained group reduces this value to $3.96\times10^{-4}$. Its median total MSS increases from 0.05455 at $10~\mathrm{m/s}$ to 0.13754 at $40~\mathrm{m/s}$, remains strictly monotonic, and is concave over all evaluated finite-difference intervals. Its tail-to-early slope ratio is 0.411, indicating that roughness continues to grow while its wind-speed sensitivity decreases. Together, the two experiments show that the multiscale generator reproduces its prescribed spectral slope energy and that the accepted statistical constraint prevents the nonlinear transform from producing unbounded or incorrectly directed MSS over a broad range of sea states. Because the observation-based laws participate in that constraint, these results establish global statistical consistency; the independent validity of the localized nonlinear geometry and its radar consequence is examined next.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Local Curling-Wave Geometry Validation}
+\label{subsec:local_curl_geometry_validation}
+
+The global MSS analysis does not determine whether the localized transformation produces a geometrically credible overturning crest. The local validation therefore considers the front-face angle, horizontal and vertical curl scales, and front--rear asymmetry. Experimental profiles of weak-to-strong plunging breakers reported by Erinin \emph{et al.} provide the primary morphology envelope~\cite{erinin2023plunging}. Because the model parameters were adjusted using these intervals, the results quantify observation-constrained morphology reproduction rather than an independent prediction of an unseen breaker population.
+
+For each generated event, a center-plane profile is extracted in the propagation direction. Let $\mathcal{P}_c$ be the set of profile points whose curl angle exceeds 8\% of its event maximum. The horizontal and vertical curl scales are
+\begin{equation}
+r_x=\max_{j\in\mathcal{P}_c}u'_j-\min_{j\in\mathcal{P}_c}u'_j,\qquad r_y=\max_{j\in\mathcal{P}_c}z'_j-\min_{j\in\mathcal{P}_c}z'_j.
+\label{eq:curl_scale_metrics}
+\end{equation}
+The forward 35\% of this support is restricted to the central 15\%--85\% of its vertical span. When the folded profile contributes points from both branches, only the descending face satisfying $(\mathrm{d}u'/\mathrm{d}u)(\mathrm{d}z'/\mathrm{d}u)<0$ is retained. If $\boldsymbol{v}_1=[v_u,v_z]^{\mathrm{T}}$ is the first right singular vector of the centered front-face coordinates, the fitted face angle is
+\begin{equation}
+\theta_f=\tan^{-1}\left(\frac{|v_z|}{|v_u|}\right).
+\label{eq:front_face_angle_metric}
+\end{equation}
+All lengths are normalized by the spectral-peak wavelength $\lambda_p=2\pi/k_p$. The adopted experimental envelope is $65^{\circ}\leq\theta_f\leq70^{\circ}$, $0.049\leq r_x/\lambda_p\leq0.069$, and $0.045\leq r_y/\lambda_p\leq0.059$. These intervals describe the selected pre-impact plunging-breaker profiles and are not interpreted as universal breaking-onset thresholds.
+
+The scale experiment uses $U_{10}=5~\mathrm{m/s}$, inverse wave age 0.84, and $H_s=0.35~\mathrm{m}$. One hundred realizations are generated for both the original shallow-curl parameter domain and the corrected domain; the random sea seed and five curling parameters vary independently within each group. A realization passes only when $\theta_f$, $r_x/\lambda_p$, and $r_y/\lambda_p$ simultaneously lie in their respective intervals. The original group produces no joint pass and has mean values $6.69^{\circ}$, 0.04482, and 0.00210. The corrected group yields $\theta_f=68.10^{\circ}\pm0.35^{\circ}$, $r_x/\lambda_p=0.05640\pm0.00051$, and $r_y/\lambda_p=0.05290\pm0.00059$, where the reported uncertainties are 95\% confidence intervals of the means. Eighty-two of the 100 corrected realizations satisfy all three conditions simultaneously. Thus, the corrected transformation produces the intended mature forward-and-downward curl over a substantial portion of the sampled parameter domain, whereas the previous setting mainly produced a shallow forward displacement.
+
+Front--rear asymmetry is evaluated from the same material profile. Let $h_c$ be the crest elevation above the full-surface mean water level, and let $L_f$ and $L_r$ be the propagation-coordinate distances from the crest to the adjacent forward and rear mean-level crossings. The steepness and asymmetry metrics are
+\begin{equation}
+\epsilon_f=\frac{h_c}{L_f},\qquad \epsilon_r=\frac{h_c}{L_r},\qquad A_{fr}=\frac{\epsilon_f}{\epsilon_r}.
+\label{eq:front_rear_asymmetry_metrics}
+\end{equation}
+The center profile is periodically wrapped about the detected crest so that events near a domain boundary retain both neighboring crossings. Moreover, the crossings are tracked using the undeformed carrier-wave material indices; the plunging jet's own intersection with the mean level is not mistaken for the outer wave boundary. Since a static random height realization has no signed phase velocity, the $0^{\circ}$ and $180^{\circ}$ propagation orientations are treated as two candidate conditional configurations.
+
+The asymmetry experiment compares 100 paired G0 no-curl, G1 shallow-curl, and G2 conditioned realizations. G2 is retained only when the selected orientation simultaneously yields $65^{\circ}\leq\theta_f\leq70^{\circ}$ and the auxiliary interval $1.60\leq A_{fr}\leq2.35$. A total of 487 candidate seed--parameter pairs are required to obtain 100 complete pairs, corresponding to an acceptance rate of 20.53\%. The median $\theta_f$ values are $5.66^{\circ}$, $6.08^{\circ}$, and $67.55^{\circ}$ for G0, G1, and G2, respectively. Their median $A_{fr}$ values are 2.085, 2.254, and 1.861, and the probability of a steeper front face, $P(A_{fr}>1)$, is 0.99, 1.00, and 1.00. The G2 front-angle bootstrap interval is $67.27^{\circ}$--$68.03^{\circ}$, while its asymmetry interval is 1.805--1.960.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][5.2cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for local curling-wave geometry validation}\\[5pt] (a) Joint distribution of front-face angle and normalized horizontal curl scale for the original and corrected parameter domains, with the Erinin envelope.\\[3pt] (b) Corresponding front-face angle and normalized vertical curl scale.\\[3pt] (c) Front-face angle distributions of the paired G0, G1, and conditioned G2 surfaces.\\[3pt] (d) Front--rear asymmetry $A_{fr}$, including the auxiliary morphology interval and median with 95\% bootstrap confidence interval.}}
+\caption{Local geometry assessment of the curling transformation. Scale agreement is evaluated over unscreened Monte Carlo realizations, whereas G2 in the angle--asymmetry comparison is a conditional-generation group with a 20.53\% acceptance rate.}
+\label{fig:local_curl_geometry_validation}
+\end{figure*}
+
+The two experiments answer complementary questions. The scale test shows that the corrected parameter domain frequently generates curl dimensions and face angles within the laboratory envelope without selecting realizations by their measured outcome. The conditioned test shows that the simulator can deliberately produce a prescribed angle--asymmetry family and quantifies the sampling cost required to do so. It does not establish a 100\% unconditional prediction rate, nor does the asymmetry result prove that the local rotation alone creates the carrier-wave asymmetry, because the conditioning also selects the propagation orientation. Subject to these boundaries, the generated patches reproduce the principal radar-relevant geometric features: a steep descending front face, finite horizontal and vertical curl scales, front--rear asymmetry, and a locally multivalued projection.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Local Electromagnetic Scattering Validation}
+\label{subsec:local_electromagnetic_validation}
+
+The geometry test establishes the shape of the curling patch but does not show whether that shape produces a meaningful change in radar-facing surface response. A strictly paired local experiment is therefore performed on the same random sea, detected crest, material window, mesh connectivity, and radar look direction. G0 uses the uncurled vertices and G1 uses the curled vertices; the face indices are selected once in G0 material coordinates and reused in G1. This arrangement isolates changes in facet area, orientation, and visibility from changes in the sampled sea realization or integration footprint.
+
+The current validation code follows the existing echo implementation and assigns visible facet $i$ the single-channel response proxy
+\begin{equation}
+\widetilde{\sigma}_i=A_i\left[\max\left(\boldsymbol{n}_i\cdot\boldsymbol{s},0\right)\right]^2,
+\label{eq:local_facet_scattering_proxy}
+\end{equation}
+where $A_i$, $\boldsymbol{n}_i$, and $\boldsymbol{s}$ are the facet area, upward-oriented normal, and unit direction to the radar. For a fixed material window $\Omega_w$ with horizontal area $A_w$, the unit-area local response is
+\begin{equation}
+\widetilde{\sigma}^{0}_{g}=\frac{1}{A_w}\sum_{i\in\Omega_w}\widetilde{\sigma}_{i,g},\qquad g\in\{0,1\}.
+\label{eq:unit_area_local_scattering_proxy}
+\end{equation}
+The curling-wave enhancement is then
+\begin{equation}
+G_b=10\log_{10}\frac{\widetilde{\sigma}^{0}_{1}}{\widetilde{\sigma}^{0}_{0}}=\widetilde{\sigma}^{0}_{1,\mathrm{dB}}-\widetilde{\sigma}^{0}_{0,\mathrm{dB}}.
+\label{eq:local_breaker_scattering_gain}
+\end{equation}
+Because both groups use the same $A_w$, this ratio is also equal to the ratio of their locally integrated response proxies. The tilde distinguishes this quantity from a rigorously calibrated, polarization- and frequency-dependent NRCS. The nominal 10-GHz frequency is metadata in this experiment; (\ref{eq:local_facet_scattering_proxy}) itself contains no wavelength, dielectric, Bragg, diffraction, or coherent multipath term.
+
+Sixty G0/G1 pairs are generated on $32\times32~\mathrm{m}^2$ surfaces with $\Delta x=\Delta y=0.05~\mathrm{m}$, $U_{10}=5~\mathrm{m/s}$, and $H_s=0.35~\mathrm{m}$. The fixed local footprint is $3.2~\mathrm{m}$ in the propagation direction and $6.4~\mathrm{m}$ in the crestwise direction, giving $A_w=20.48~\mathrm{m}^2$. The radar is placed in the up-wave direction at a nominal grazing angle of $12^{\circ}$. G1 uses a continuous morphology control $\chi\in[0.15,1.00]$, sampled by stratification rather than by discrete weak, moderate, and strong groups, and its maximum rotation multiplier is $1.35\chi$. The response is summarized by all paired $G_b$ values and by medians and interquartile ranges in eight $\chi$ bins.
+
+For an external magnitude reference, the fixed HH panel in Fig.~8(a) of Kim and Johnson is digitized~\cite{kim2002breakingwave}. At each LONGTANK stage, the largest of the reported direct, single-bounce, and double-bounce maximum image magnitudes is retained. The median over stages 1--8, $-21.65~\mathrm{dB}$, defines a prebreaking reference, and the derived breaking-stage enhancement for stages 9--16 is
+\begin{equation}
+G_{b,\mathrm{ref}}(n)=S_{\mathrm{dom}}(n)-\operatorname{median}_{1\leq j\leq8}S_{\mathrm{dom}}(j).
+\label{eq:literature_breaker_gain}
+\end{equation}
+The extracted values have a median of 6.10~dB, a range of 2.25--7.85~dB, and an estimated digitization uncertainty of $\pm1$~dB. This is a derived comparison quantity, not an NRCS metric defined by the source. Moreover, the literature abscissa is breaker evolution stage, whereas $\chi$ is a model control parameter; the two axes are not mapped to one another. The reference is consequently used as a stage envelope and a distribution-level magnitude comparison, not as a pointwise response curve.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][4.6cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for local electromagnetic scattering validation}\\[5pt] (a) Sixty paired $G_b$ samples versus the continuous model control $\chi$, with eight-bin medians and interquartile ranges; the literature-derived enhancement is shown only as a horizontal stage envelope and median.\\[3pt] (b) Literature and present-model enhancement distributions shown as two categories, including raw samples, medians, interquartile ranges, and the $\pm1$-dB digitization uncertainty of the literature points.}}
+\caption{Paired local scattering response of the curling geometry. The literature breaker stage and the model control $\chi$ are not treated as equivalent coordinates.}
+\label{fig:local_electromagnetic_validation}
+\end{figure*}
+
+All 60 paired cases yield $G_b>0$ under the adopted response proxy. The median enhancement is 5.069~dB, with an interquartile interval of 2.312--6.919~dB and a complete range of 0.127--9.046~dB. The model median is 1.031~dB below the literature-derived median, while the complete model interquartile interval lies inside the 2.25--7.85-dB literature stage envelope. This supports agreement in the order of the local enhancement rather than agreement in absolute scattering calibration.
+
+The response also varies smoothly with the model control. The Pearson and Spearman correlations between $\chi$ and $G_b$ are 0.9794 and 0.9823, respectively, and a linear summary gives a slope of $10.592~\mathrm{dB}/\chi$. The median enhancement increases from 0.295~dB in the first $\chi$ bin to 8.025~dB in the last. This monotonicity demonstrates numerical control and geometric sensitivity within the adopted facet proxy; it is not expected to reproduce the nonmonotonic LONGTANK stage sequence, where coherent direct, single-bounce, and double-bounce mechanisms exchange dominance. Full-wave diffraction, multipath interference, foam, spray, and polarization-dependent scattering remain outside the local proxy. The present experiment therefore establishes that the validated curling geometry generates a stable unit-area radar-facing response of a literature-consistent magnitude, while absolute NRCS and coherent breaking-wave electromagnetics are not claimed.
+
+
+
+
+
+
+
+
+
+
+\subsection{Full-Scene Radar Echo and Statistical Validation}
+\label{subsec:full_scene_echo_validation}
+
+The preceding tests isolate global surface statistics, local curling geometry, and its unit-area scattering consequence. This subsection evaluates whether the simulated full-scene complex echoes reproduce the range--time organization and amplitude statistics of measured sea clutter. The accepted full-scene experiment compares a linear Elfouhaily baseline, the proposed nonlinear background with directionally organized wind waves, and a measured staring-mode record. Localized curling events are not inserted as a separate class in this run because their geometry and local response were evaluated in Sections~\ref{subsec:local_curl_geometry_validation} and~\ref{subsec:local_electromagnetic_validation}; the conclusions below therefore concern the large-area nonlinear wind-wave and statistical echo components.
+
+The measured case provides $U_{10}=8.32~\mathrm{m/s}$, $H_s=0.839~\mathrm{m}$, mean period $T_{01}=3.327~\mathrm{s}$, wind-from direction $342.4^{\circ}$, and wave-from direction $353.0^{\circ}$. The radar operates at 9.4~GHz with HH polarization and an antenna height of 80~m. Its measured header supplies the pulse-repetition frequency, range sampling, first range, staring direction, and available pulse count. Both simulations use 4096 pulses over the matched 1--5-km interval, the same random broadband realization, and the same radar and receiver parameters. The proposed group reallocates 35\% of the elevation variance to a directional wind-wave band centered at $T_{01}$ with a directional spreading exponent of 18, then applies the nonlinear Lie/Creamer correction. The resulting significant wave heights are 0.8390 and 0.8409~m for the linear and proposed groups, respectively, so the comparison does not obtain its statistical differences from a material increase in total wave energy.
+
+The time-averaged range profile is defined as
+\begin{equation}
+\overline{P}(r_b)=\frac{1}{N_p}\sum_{n=1}^{N_p}|y_{n,b}|^2,
+\label{eq:mean_range_profile}
+\end{equation}
+where $y_{n,b}$ is the complex pulse-compressed echo in pulse $n$ and range cell $b$. Absolute Linear/Proposed comparisons retain their common physical simulation scale. For structural comparison with the uncalibrated measured analog-to-digital-converter data, each echo is compensated only for the theoretical $R^{-4}$ power loss, or $R^{-2}$ in amplitude, and then normalized by one global group RMS. No empirical per-range normalization is applied, because that operation would suppress the range texture to be evaluated.
+
+The range profile and range--time intensity (RTI) image provide complementary evidence. The absolute profiles and RTIs verify that the simulated power decreases with range under the radar equation, while the structurally compensated RTIs expose slow-time persistence and range-localized bright bands. Over the homogeneous 2.5--3.0-km gate, the proposed mean power is $5.95\times10^{-21}$, compared with $6.70\times10^{-21}$ for the linear baseline, but its 99.9th-percentile amplitude is 1.267 times the corresponding linear value. Thus, the proposed model produces stronger intermittent events without imposing a higher mean-power scale. Visually, the linear RTI remains predominantly fine-grained, whereas the proposed RTI contains longer-lived range structures similar to those visible in the measured record.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][5.0cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for full-scene range and RTI validation}\\[5pt] (a) Time-averaged Linear and Proposed range profiles on their common absolute simulation scale.\\[3pt] (b)--(d) Linear, Proposed, and Measured RTIs after theoretical $R^2$ amplitude compensation and one global RMS normalization per group; all panels use a common display range and no empirical per-range envelope removal.}}
+\caption{Full-scene range profiles and RTIs for the matched wind, wave, and radar conditions.}
+\label{fig:full_scene_range_rti}
+\end{figure*}
+
+Slow-time and range persistence are quantified from the centered intensity autocorrelation
+\begin{equation}
+\rho_I(\tau)=\frac{\mathbb{E}\{[I(t)-\mu_I][I(t+\tau)-\mu_I]\}}{\mathbb{E}\{[I(t)-\mu_I]^2\}},\qquad I(t)=|y(t)|^2.
+\label{eq:intensity_autocorrelation}
+\end{equation}
+The lag-one intensity correlations are 0.857, 0.963, and 0.947 for Linear, Proposed, and Measured, respectively. At a 100-ms lag, they are 0.0524, 0.4626, and 0.1494, while the integrated correlation times are 0.0218, 0.1264, and 0.0423~s. The proposed return therefore corrects the near-memoryless behavior of the linear baseline but remains more persistent than this measured realization. By contrast, the 5-m range correlations are 0.703, 0.649, and 0.656, showing close agreement between the proposed and measured range continuity. This result supports the presence of coherent slow-time structures but also identifies the proposed texture lifetime as an upper-biased calibration for the present case.
+
+For amplitude-distribution analysis, samples are drawn from the fixed 2.5--3.0-km homogeneous gate after theoretical range compensation. Each group uses a single normalization
+\begin{equation}
+a=\frac{|y|}{\sqrt{\mathbb{E}|y|^2}},
+\label{eq:rms_normalized_echo_amplitude}
+\end{equation}
+which preserves spatial power texture within the gate. The empirical cumulative distribution and complementary cumulative distribution are $\widehat{F}(a)$ and $\widehat{\overline{F}}(a)=1-\widehat{F}(a)$. Rayleigh, Weibull, log-normal, and K amplitude models are fitted after echo generation. Distribution agreement with the measured samples is evaluated using the two-sample Kolmogorov--Smirnov distance, the one-dimensional Wasserstein distance, and the logarithmic tail error
+\begin{equation}
+E_{\mathrm{tail}}=\left[\frac{1}{N_t}\sum_{j\in\mathcal{T}}\left(\log_{10}\widehat{\overline{F}}_{s}(a_j)-\log_{10}\widehat{\overline{F}}_{m}(a_j)\right)^2\right]^{1/2},
+\label{eq:log_ccdf_tail_error}
+\end{equation}
+where $\mathcal{T}$ contains measured tail probabilities from $10^{-4}$ to $10^{-1}$.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][4.8cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for full-scene statistical validation}\\[5pt] (a) Slow-time and range intensity autocorrelation of Linear, Proposed, and Measured echoes.\\[3pt] (b) Empirical RMS-normalized amplitude PDFs.\\[3pt] (c) Empirical CDFs.\\[3pt] (d) Empirical CCDFs on a logarithmic probability axis, with Rayleigh, Weibull, log-normal, and K fits shown where required.}}
+\caption{Temporal, spatial, and amplitude-distribution statistics in the fixed 2.5--3.0-km sea-clutter gate.}
+\label{fig:full_scene_echo_statistics}
+\end{figure*}
+
+The linear amplitudes are nearly Rayleigh: their Weibull shape is 2.004 and the fitted K shape parameter reaches 90.30, effectively the Rayleigh limit. The proposed and measured amplitudes are both heavy tailed. Their Weibull shapes are 1.380 and 1.523, their K shape parameters are 1.095 and 1.741, and their normalized 99.9th-percentile amplitudes are 3.586 and 3.806, respectively, compared with 2.598 for Linear. The probabilities above twice the RMS amplitude are 0.01796, 0.04683, and 0.04430. Among the four parametric fits, Weibull gives the lowest information criterion for the proposed samples, whereas K gives the best fit to the measured samples; accordingly, the comparison is based primarily on the empirical PDF/CDF/CCDF rather than on requiring the two datasets to select the same named distribution.
+
+Direct empirical distances confirm the improvement. Replacing the linear baseline with the proposed model reduces the two-sample KS distance from 0.1254 to 0.0592, the Wasserstein distance from 0.1266 to 0.0380, and the logarithmic CCDF-tail RMSE from 1.7948 to 0.4420. The normalized 99th-percentile error changes from $-22.99\%$ to $-1.09\%$, while the error in the probability of exceeding the measured 99th-percentile threshold decreases from $-9.66\times10^{-3}$ to $-6.63\times10^{-4}$. The proposed echo thus reproduces the measured marginal distribution and tail probability much more closely than the linear model, although its slow-time persistence is too strong.
+
+These results must be interpreted as a matched-condition reproduction rather than a fully independent generalization test. The fast and slow speckle time scales and the effective range-response bandwidth were estimated from the measured autocorrelation, and the proposed echo additionally uses a unit-mean, correlated Gamma power texture with a nominal shape of one, a 1.8-s time scale, and a 90-m range scale. This compound-Gaussian texture is a resolution-cell wind-wave modulation model applied after pulse compression; it is not produced by the TSC kernel or by localized curling geometry, and it was selected to reproduce the observed persistence and heavy tail without changing mean power. Consequently, the present case establishes end-to-end consistency of the surface-to-echo generator under a calibrated sea state. Verification on held-out acquisitions, wind speeds, and viewing geometries remains necessary before claiming environment-wide statistical generalization.
+
+
+
+
+
+
+
+
+
+
+
