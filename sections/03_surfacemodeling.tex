@@ -1,0 +1,123 @@
+\subsection{Overall Framework}
+
+The objective of the proposed framework is to generate physically interpretable sea-surface realizations under controllable environmental conditions while retaining a computational form suitable for radar echo simulation. The environmental parameter vector is denoted by
+\begin{equation}
+\boldsymbol{p}_{e}
+=
+\left\{
+U_{10},\,\phi_{w},\,\Omega,\,H_{s},\,L_{x},\,L_{y},\,\Delta x,\,\Delta y
+\right\},
+\label{eq:environment_parameter_vector}
+\end{equation}
+where $U_{10}$ is the wind speed at a height of 10~m, $\phi_{w}$ is the wind direction, $\Omega$ denotes the inverse wave age, $H_{s}$ is the prescribed or normalized significant wave height, $L_x$ and $L_y$ define the horizontal domain, and $\Delta x$ and $\Delta y$ are the sampling intervals. A random variable set $\boldsymbol{\xi}$ controls the spectral phases and therefore produces independent realizations under the same environmental condition. The radar parameter vector is written as
+\begin{equation}
+\boldsymbol{p}_{r}
+=
+\left\{
+f_{c},\,\theta_{i},\,\phi_{r},\,\mathcal P,\,B,\,N_{p}
+\right\},
+\label{eq:radar_parameter_vector}
+\end{equation}
+where $f_c$, $\theta_i$, $\phi_r$, $\mathcal P$, $B$, and $N_p$ denote the carrier frequency, incidence angle, radar azimuth, polarization, signal bandwidth, and pulse number, respectively. Separating $\boldsymbol p_e$, $\boldsymbol p_r$, and $\boldsymbol\xi$ allows the sea state, radar observation, and random realization to be varied independently during dataset generation.
+
+\begin{figure*}[!t]
+\centering
+\fbox{%
+\parbox[c][3.8cm][c]{0.94\textwidth}{%
+\centering
+\textbf{Placeholder for the overall framework figure}\\[4pt]
+Left to right: environmental parameters and random phases $\rightarrow$
+linear Elfouhaily surface $\rightarrow$ nonlinear Lie background $\rightarrow$
+equal-energy directional short-wave reconstruction $\rightarrow$
+steep-crest detection and localized curling transformation $\rightarrow$
+triangular facets and radar echo generation.\\[4pt]
+The final version should show the three surface states using the same spatial domain and mark the locally triggered curling region.
+}}
+\caption{Overall framework of the proposed hierarchical sea-surface and radar-echo simulation method.}
+\label{fig:overall_framework}
+\end{figure*}
+
+The surface construction contains three successive levels. First, a linear random surface is synthesized from the Elfouhaily directional spectrum \cite{elfouhaily1997unified}. Let $S_E(\boldsymbol{k};\boldsymbol p_e)$ be the two-dimensional spectrum and $\varphi_{\boldsymbol k}(\boldsymbol\xi)$ be the random phase associated with wave vector $\boldsymbol k$. The linear elevation is expressed compactly as
+\begin{equation}
+\begin{aligned}
+\eta_{L}(x,y)
+={}&\mathcal F^{-1}\!\left\{
+\sqrt{2S_E(\boldsymbol{k};\boldsymbol p_e)
+\Delta k_x\Delta k_y}\right.\\[-2pt]
+&\left.{}\times
+\exp\!\left[j\varphi_{\boldsymbol k}(\boldsymbol\xi)\right]
+\right\},
+\end{aligned}
+\label{eq:linear_surface_framework}
+\end{equation}
+where conjugate symmetry is imposed to obtain a real-valued surface. A wind-dependent nonlinear Lie operator $\mathcal L$ is then applied to introduce crest sharpening and crest--trough asymmetry while constraining the large-area slope statistics:
+\begin{equation}
+\eta_{\mathrm{NL}}
+=
+\mathcal L
+\left[
+\eta_L;\,U_{10},\phi_w
+\right].
+\label{eq:nonlinear_background_framework}
+\end{equation}
+This level provides the nonlinear background surface but retains a single-valued elevation representation.
+
+Second, a prescribed short-wave band $\mathcal K_s$ is reorganized to form wind-wave ridges with a dominant propagation direction. Instead of directly adding an independent component, the original band is removed and replaced by an equal-energy directional realization:
+\begin{equation}
+\eta_{D}
+=
+\eta_{\mathrm{NL}}
+-\mathcal B_s\!\left[\eta_{\mathrm{NL}}\right]
++\eta_{s}^{\mathrm{dir}},
+\label{eq:directional_band_replacement_framework}
+\end{equation}
+subject to
+\begin{equation}
+\int_{\mathcal K_s}
+S_{s}^{\mathrm{dir}}(\boldsymbol k)\,\mathrm d\boldsymbol k
+=
+\int_{\mathcal K_s}
+S_{\mathrm{NL}}(\boldsymbol k)\,\mathrm d\boldsymbol k.
+\label{eq:directional_band_energy_constraint}
+\end{equation}
+Here, $\mathcal B_s[\cdot]$ is a band-pass operator, $\eta_s^{\mathrm{dir}}$ is the reconstructed directional component, and $S_s^{\mathrm{dir}}$ and $S_{\mathrm{NL}}$ are the corresponding spectral densities. Equation~\eqref{eq:directional_band_energy_constraint} prevents repeated energy injection into the selected band while allowing its directional distribution to be controlled.
+
+Third, a local crest score $Q(x,y)$ is computed from the normalized elevation, the slope along the dominant propagation direction, and the negative directional curvature. The curling center is selected as
+\begin{equation}
+\begin{aligned}
+(x_c,y_c)
+&=\mathop{\arg\max}_{(x,y)\in\mathcal D_c}Q(x,y),\\
+Q(x,y)&=w_hQ_h+w_sQ_s+w_cQ_c,
+\end{aligned}
+\label{eq:crest_selection_framework}
+\end{equation}
+where $\mathcal D_c$ is the admissible crest region and $w_h$, $w_s$, and $w_c$ are weighting coefficients. A local coordinate system $(u,v,z)$ is established at $(x_c,y_c)$, with $u$ along the dominant propagation direction and $v$ along the crest. The final curled surface is represented parametrically as
+\begin{equation}
+\boldsymbol r_C(u,v)
+=
+\boldsymbol r_D(u,v)
++W(u,v)\,
+\boldsymbol d_C
+\left(u,v,z;\boldsymbol p_c\right),
+\label{eq:localized_curl_framework}
+\end{equation}
+where $\boldsymbol r_D=[x_D,y_D,\eta_D]^{\mathrm T}$ is the directional-wave surface, $W(u,v)$ is a compact support function, $\boldsymbol d_C$ is the curling displacement, and $\boldsymbol p_c$ contains the local length, width, height, forward-extension, and curling parameters. Unlike $\eta_L$, $\eta_{\mathrm{NL}}$, and $\eta_D$, the final geometry is not restricted to the form $z=\eta(x,y)$; the parametric coordinates in \eqref{eq:localized_curl_framework} permit locally overturned facets.
+
+The parametric surface is triangulated to form the mesh $\mathcal M_C$, which provides facet locations, areas, and normal vectors for the radar model. The complete generation chain can therefore be summarized as
+\begin{equation}
+\begin{aligned}
+\left(\boldsymbol p_e,\boldsymbol\xi\right)
+&\xrightarrow{\;\mathcal G_E\;}
+\eta_L
+\xrightarrow{\;\mathcal L\;}
+\eta_{\mathrm{NL}}\\[-2pt]
+&\xrightarrow{\;\mathcal D_s\;}
+\eta_D
+\xrightarrow{\;\mathcal C\;}
+\mathcal M_C
+\xrightarrow{\;\mathcal R(\boldsymbol p_r)\;}
+\boldsymbol y,
+\end{aligned}
+\label{eq:complete_simulation_chain}
+\end{equation}
+where $\mathcal G_E$, $\mathcal D_s$, $\mathcal C$, and $\mathcal R$ denote spectral synthesis, directional short-wave reconstruction, localized curling, and radar echo generation, respectively, and $\boldsymbol y$ is the simulated radar data. This hierarchical formulation preserves the efficiency of spectral synthesis over most of the domain and confines the additional curling computation to a sparse, physically selected region.
