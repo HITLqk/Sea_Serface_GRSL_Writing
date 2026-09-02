@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  1 SEP 2026 23:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 16:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -185,11 +185,35 @@ LaTeX Warning: Citation `li2017facet' on page 1 undefined on input line 12.
 LaTeX Warning: Citation `dong2023plunging' on page 1 undefined on input line 12.
 
 
+LaTeX Warning: Citation `holliday1998steepening' on page 1 undefined on input line 14.
+
+
+LaTeX Warning: Citation `west2002plunging' on page 1 undefined on input line 14.
+
+
+LaTeX Warning: Citation `li2017facet' on page 1 undefined on input line 14.
+
+
+LaTeX Warning: Citation `dong2023plunging' on page 1 undefined on input line 14.
+
+
 
 [1{e:/Latex/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{e:/Latex/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
-]) (./00_main.bbl
+]
+
+LaTeX Warning: Citation `li2019fpfsm' on page 2 undefined on input line 18.
+
+
+LaTeX Warning: Citation `liu2026parallel' on page 2 undefined on input line 18.
+
+
+LaTeX Warning: Citation `zhang2024gpu' on page 2 undefined on input line 18.
+
+)
+
+(./00_main.bbl
 
 ./00_main.bbl:23: LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -204,11 +228,7 @@ If that doesn't work, type  X <return>  to quit.
 
 )
 
-
-
-[2
-
-] (./00_main.aux)
+[2] (./00_main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -221,13 +241,13 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  1279 strings out of 473190
  25685 string characters out of 5716852
- 431130 words of memory out of 5000000
+ 433289 words of memory out of 5000000
  24592 multiletter control sequences out of 15000+600000
  585039 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,7n,50p,1748b,167s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 36i,6n,50p,1922b,167s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on 00_main.pdf (2 pages, 41168 bytes).
+Output written on 00_main.pdf (2 pages, 42662 bytes).
 PDF statistics:
  27 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream
