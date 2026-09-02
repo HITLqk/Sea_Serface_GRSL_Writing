@@ -240,3 +240,108 @@ Preserving the connectivity is essential because retriangulation in the $(x',y')
 \caption{Localized curling-wave construction on a selected directional crest. The rotation begins on the approaching shoulder and is blended into the background through a wider transition region.}
 \label{fig:localized_curl_construction}
 \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Facet-Based Scattering and Radar Echo Generation}
+\label{subsec:radar_echo_generation}
+
+The curled surface is converted into radar data through a facet-based mean-power model followed by resolution-cell statistical echo synthesis. The electromagnetic component does not constitute a new full-wave or two-scale scattering theory. Instead, the resolved triangular geometry determines local orientation, projected area, range, antenna weighting, and visibility, while unresolved X-band roughness is represented by the Technology Service Corporation (TSC) empirical sea-reflectivity kernel. This distinction is important because the TSC acronym refers to the empirical model rather than to a ``two-scale composite'' abbreviation~\cite{karimian2011refractivity}.
+
+For facet $m$, let $\boldsymbol{r}_m$, $\boldsymbol{n}_m$, and $A_m$ denote its center, unit normal, and surface area, and let $\boldsymbol{r}_R$ be the radar position. The slant range and look direction from the facet to the radar are
+\begin{equation}
+R_m=\|\boldsymbol{r}_R-\boldsymbol{r}_m\|,
+\qquad
+\boldsymbol{s}_m=\frac{\boldsymbol{r}_R-\boldsymbol{r}_m}{R_m}.
+\label{eq:facet_radar_geometry}
+\end{equation}
+The local grazing angle and relative wind azimuth are
+\begin{equation}
+\phi_m=\sin^{-1}(\boldsymbol{n}_m\cdot\boldsymbol{s}_m),
+\qquad
+\vartheta_m=\operatorname{wrap}_{[-\pi,\pi]}(\varphi_w-\varphi_m),
+\label{eq:facet_grazing_wind_angles}
+\end{equation}
+where $\varphi_m$ is the radar azimuth viewed from the facet. Back-facing facets, facets below the minimum grazing angle, and facets hidden by a larger preceding horizon angle are removed through a binary visibility factor $V_m$. This update makes the curling transformation affect the return through both facet orientation and self-shadowing.
+
+The conditional mean NRCS is evaluated as the sum of an empirical diffuse term and a quasi-specular term:
+\begin{equation}
+\sigma_m^0=\sigma_d^0(\lambda,S,\phi_m,\vartheta_m,U_{10})+\sigma_q^0(\lambda,S,\phi_m),
+\label{eq:tsc_total_nrcs}
+\end{equation}
+where $S$ is the Douglas sea-state index and $\lambda$ is the radar wavelength. In the implemented HH-polarized kernel,
+\begin{align}
+\sigma_d^0={}&\frac{1.7\times10^{-5}\sqrt{\phi_m}}{(3.2808\lambda+0.05)^{1.8}}
+F_aF_UF_\vartheta F_p,
+\nonumber\\
+\sigma_q^0={}&\mu\cot^2\beta\exp\!\left[-\frac{\cot^2\phi_m}{\tan^2\beta}\right],
+\label{eq:tsc_diffuse_quasi_terms}
+\end{align}
+with
+\begin{align}
+\chi&=\frac{4.5416\phi_m(3.2808\sigma_H+0.25)}{\lambda},
+\nonumber\\
+F_a&=\frac{\chi^{1.5}}{1+\chi^{1.5}},
+\qquad
+F_U=\left(\frac{1.9438U_{10}+4}{15}\right)^{p},
+\nonumber\\
+F_p&=1-0.6\sin^2\vartheta_m,
+\qquad
+F_\vartheta=\exp(\Gamma_\vartheta),
+\nonumber\\
+\Gamma_\vartheta&=0.3\cos\vartheta_m\exp(-\phi_m/0.17)
+\nonumber\\
+&\quad\times(10.7636\lambda^2+0.005)^{-0.2},
+\label{eq:tsc_empirical_factors}
+\end{align}
+where $\sigma_H=0.03505S^{1.95}$ and $p$, $\mu$, and $\beta$ follow the standard wavelength-, grazing-angle-, and sea-state-dependent TSC parameterization. The dB output is converted to linear NRCS before any area weighting. The empirical kernel is used because it provides a low-cost conditional mean for large numbers of facets; physics-based two-scale models remain relevant independent references, particularly in the transition region where Bragg and quasi-specular mechanisms coexist~\cite{ye2022improvedTSM}.
+
+The horizontal projected area of facet $m$ is $A_{h,m}=A_m\max(\boldsymbol{n}_m\cdot\boldsymbol{e}_z,0)$, and its monostatic RCS contribution is
+\begin{equation}
+\sigma_m=V_m\sigma_m^0A_{h,m}.
+\label{eq:facet_rcs_contribution}
+\end{equation}
+Let $G_m$ denote the one-way antenna power gain. The mean received power accumulated in range cell $b$ is
+\begin{equation}
+P_b=\sum_{m\in\mathcal{I}_b}\frac{P_t\lambda^2G_m^2}{(4\pi)^3R_m^4}\sigma_m,
+\label{eq:range_cell_mean_power}
+\end{equation}
+where $\mathcal{I}_b$ contains all visible facets assigned to the cell and $P_t$ is the transmitted peak power. The summation is performed at the conditional-power level rather than by solving mutual electromagnetic interactions among all facets.
+
+Slow-time variability is introduced at the resolution-cell level. A unit-power complex speckle process is formed from fast and slow components,
+\begin{align}
+s_{n,b}&=\sqrt{1-f_s}\,s_{n,b}^{(f)}+\sqrt{f_s}\,s_{n,b}^{(s)},
+\nonumber\\
+s_{n,b}^{(j)}&=\rho_j s_{n-1,b}^{(j)}+\sqrt{1-\rho_j^2}\,w_{n,b}^{(j)}.
+\label{eq:two_time_scale_speckle}
+\end{align}
+where $w_{n,b}^{(j)}$ is a circular complex Gaussian innovation and $\rho_j=\exp[-1/(f_{\mathrm{PRF}}\tau_j)]$. A positive correlated texture $T_{n,b}$ is generated independently and normalized so that $\mathbb{E}[T_{n,b}]=1$. Thus, texture and speckle alter intermittency and temporal persistence without changing the conditional mean power supplied by the facet model.
+
+Before pulse compression, the complex baseband return is
+\begin{equation}
+y_{n,b}^{(0)}=\sqrt{P_bT_{n,b}}\,s_{n,b}\exp\!\left(-\mathrm{i}\frac{4\pi R_b}{\lambda}\right)+n_{n,b},
+\label{eq:resolution_cell_complex_echo}
+\end{equation}
+where $n_{n,b}$ is receiver noise. With the normalized range impulse response $h_b$, the simulated echo is
+\begin{equation}
+y_{n,b}=\sum_{q}h_qy_{n,b-q}^{(0)}.
+\label{eq:pulse_compressed_echo}
+\end{equation}
+The range--time intensity image is formed from $I_{n,b}=|y_{n,b}|^2$ and displayed using a common reference level across the compared groups. Echo amplitudes or intensities extracted from a predeclared homogeneous range interval are then used for the distribution, tail-probability, temporal-correlation, and sea-spike analyses described in the validation section.
+
+This implementation is a scalable conditional-mean scattering and statistical echo generator, not a coherent per-facet, per-pulse full-wave solver. The TSC kernel does not explicitly model crest diffraction, foam volume scattering, spray, or multipath between overturning faces. Consequently, changes between paired noncurling and curling cases quantify the response produced within the adopted geometry, projected-area, local-angle, visibility, and empirical-reflectivity model; they are not interpreted as the complete electromagnetic response of a real breaking wave.
+
+\begin{figure}[!t]
+\centering
+\fbox{\parbox[c][3.8cm][c]{0.92\columnwidth}{\centering Placeholder for facet viewing geometry, local grazing angle and visibility, range-bin power accumulation, correlated speckle/texture modulation, pulse compression, and the resulting RTI image.}}
+\caption{Facet-based sea-scattering and radar-echo synthesis chain.}
+\label{fig:radar_echo_generation}
+\end{figure}
