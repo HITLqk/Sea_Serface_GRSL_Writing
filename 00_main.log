@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 22:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 23:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -399,23 +399,247 @@ LaTeX Warning: Citation `zhao2005spilling' on page 1 undefined on input line 14.
 
 
 
-./sections/02_introduction.tex:15: I can't write on file `00_main.pdf'.
-(Press Enter to retry, or Control-Z to exit; default file extension is `.pdf')
-Please type another file name for output
-./sections/02_introduction.tex:15: Emergency stop.
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.15 
-     
-*** (job aborted, file error in nonstop mode)
+[1{e:/Latex/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{e:/Latex/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
- 
+
+]
+
+LaTeX Warning: Citation `zhang2023secondorder' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `xie2024skewness' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `holliday1998steepening' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `west1999ray' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `li2017facet' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `dong2023plunging' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `li2017facet' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `dong2023plunging' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `xie2022convolutions' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `zhang2023secondorder' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `holliday1998steepening' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `li2017facet' on page 2 undefined on input line 16.
+
+
+LaTeX Warning: Citation `dong2023plunging' on page 2 undefined on input line 16.
+
+
+
+
+LaTeX Warning: Citation `li2019fpfsm' on page 2 undefined on input line 20.
+
+
+LaTeX Warning: Citation `liu2026parallel' on page 2 undefined on input line 20.
+
+
+LaTeX Warning: Citation `zhang2024gpu' on page 2 undefined on input line 20.
+
+) (./sections/03_surfacemodeling.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]\OT1/ptm/m/n/10 The pro-posed frame-work maps en-vi-ron-men-tal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+\OT1/ptm/m/n/10 con-di-tions and ran-dom re-al-iza-tions to radar-ready
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+\OT1/ptm/m/n/10 dy-namic sea sur-faces. The en-vi-ron-men-tal in-put is
+ []
+
+
+
+[2]
+
+LaTeX Warning: Citation `elfouhaily1997unified' on page 3 undefined on input line 47.
+
+
+LaTeX Warning: Citation `zhang2023secondorder' on page 3 undefined on input line 66.
+
+
+
+
+LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 3 undefined on input line 100.
+
+
+
+[3]
+
+LaTeX Warning: Citation `holliday1998steepening' on page 4 undefined on input line 136.
+
+
+LaTeX Warning: Citation `li2017facet' on page 4 undefined on input line 136.
+
+
+LaTeX Warning: Citation `dong2023plunging' on page 4 undefined on input line 136.
+
+
+
+
+
+[4]
+
+LaTeX Warning: Citation `karimian2011refractivity' on page 5 undefined on input line 257.
+
+
+
+
+LaTeX Warning: Citation `ye2022improvedTSM' on page 5 undefined on input line 305.
+
+
+
+[5]) (./sections/04_validation.tex
+
+
+LaTeX Warning: Citation `cox1954measurement' on page 6 undefined on input line 25.
+
+
+LaTeX Warning: Citation `guerin2023seasurfaceslope' on page 6 undefined on input line 33.
+
+
+LaTeX Warning: Citation `gao2024generalized' on page 6 undefined on input line 33.
+
+
+
+[6]
+
+LaTeX Warning: Reference `fig:global_mss_low_wind' on page 7 undefined on input line 54.
+
+
+
+
+LaTeX Warning: Reference `fig:global_mss_high_wind' on page 7 undefined on input line 72.
+
+
+
+[7]
+
+LaTeX Warning: Citation `erinin2023plunging' on page 8 undefined on input line 87.
+
+
+
+
+
+[8]
+
+LaTeX Warning: Reference `eq:local_facet_scattering_proxy' on page 9 undefined on input line 151.
+
+
+
+
+LaTeX Warning: Citation `kim2002breakingwave' on page 9 undefined on input line 155.
+
+
+
+[9]
+
+LaTeX Warning: Reference `subsec:local_curl_geometry_validation' on page 10 undefined on input line 185.
+
+
+LaTeX Warning: Reference `subsec:local_electromagnetic_validation' on page 10 undefined on input line 185.
+
+
+
+
+
+[10]
+
+
+Underfull \vbox (badness 2384) has occurred while \output is active []
+
+
+
+[11]
+
+
+LaTeX Warning: Citation `li2019fpfsm' on page 12 undefined on input line 284.
+
+
+LaTeX Warning: Citation `liu2026parallel' on page 12 undefined on input line 284.
+
+
+LaTeX Warning: Citation `zhang2024gpu' on page 12 undefined on input line 284.
+
+
+
+[12]) (./sections/05_conclusion.tex) (./00_main.bbl
+
+./00_main.bbl:23: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \end{thebibliography}
+                          
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+
+
+[13] (./00_main.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4561 strings out of 473190
- 78820 string characters out of 5716852
- 483795 words of memory out of 5000000
- 27791 multiletter control sequences out of 15000+600000
- 576339 words of font info for 69 fonts, out of 8000000 for 9000
+ 4786 strings out of 473190
+ 83646 string characters out of 5716852
+ 496795 words of memory out of 5000000
+ 27959 multiletter control sequences out of 15000+600000
+ 594352 words of font info for 109 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 57i,6n,65p,1748b,173s stack positions out of 10000i,1000n,20000p,200000b,200000s
-./sections/02_introduction.tex:15:  ==> Fatal error occurred, no output PDF file produced!
+ 57i,17n,65p,2132b,262s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 00_main.pdf (13 pages, 303606 bytes).
+PDF statistics:
+ 143 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

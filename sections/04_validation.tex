@@ -244,3 +244,50 @@ These results must be interpreted as a matched-condition reproduction rather tha
 
 
 
+\subsection{Computational Cost and Dataset Scalability}
+\label{subsec:computational_efficiency}
+
+The preceding validations establish statistical, geometric, local-scattering, and full-scene echo consistency. This final experiment examines whether the complete generator is computationally suitable for producing large radar datasets. One timed sample comprises directional spectral sampling and inverse fast Fourier transformation (IFFT), the nonlinear Lie/Creamer correction and horizontal displacement, equal-energy directional short-wave replacement, localized curling, triangular-facet construction and TSC-based range-bin accumulation, correlated speckle/texture synthesis, and pulse-compression filtering. Optional MAT-file storage is timed separately. This definition follows the actual resolution-cell statistical echo chain used in this work; it must not be interpreted as a full-wave solution or as coherent accumulation over every facet at every pulse.
+
+Let $N_g=N_xN_y$ be the number of surface vertices, $N_f=2(N_x-1)(N_y-1)$ the number of triangular facets, $N_p$ the number of pulses, $N_r$ the number of range cells, and $K$ the pulse-compression kernel length. The measured compute time is decomposed as
+\begin{equation}
+T_{\mathrm{comp}}=T_{\mathrm{base}}+T_{\mathrm{Lie}}+T_{\mathrm{short}}+T_{\mathrm{curl}}+T_{\mathrm{EM}}+T_{\mathrm{echo}},
+\label{eq:runtime_decomposition}
+\end{equation}
+where $T_{\mathrm{EM}}$ includes mesh construction, facet-wise TSC evaluation, visibility testing, the radar equation, and range-bin accumulation. The end-to-end stored-sample time is $T_{\mathrm{sample}}=T_{\mathrm{comp}}+T_{\mathrm{IO}}$. For the single-geometry realization used in the benchmark, the leading computational order is
+\begin{equation}
+T_{\mathrm{comp}}=\mathcal{O}(N_g\log N_g)+\mathcal{O}(N_f)+\mathcal{O}(N_pN_r)+\mathcal{O}(N_pN_rK).
+\label{eq:runtime_complexity_single_snapshot}
+\end{equation}
+For a dynamic sequence containing $N_s$ independently updated geometries, the surface-generation and facet terms become $\mathcal{O}[N_s(N_g\log N_g+N_f)]$, whereas the precise echo cost depends on how the geometry snapshots are assigned to the $N_p$ pulses.
+
+The scalability test uses square grids of $128$, $256$, $512$, and $1024$ points per axis with fixed $\Delta x=\Delta y=0.25~\mathrm{m}$, corresponding to domains from $32\times32$ to $256\times256~\mathrm{m}^2$ and from 32,258 to 2,093,058 facets. Thus, this experiment measures increasing scene size at fixed spatial sampling, rather than resolution convergence on a fixed domain. Each case generates a 4096-pulse echo, one warm-up realization is discarded, and ten independent realizations are timed. The test was executed in MATLAB R2025b under 64-bit Windows 11 on a host with eight logical cores. Mean, standard deviation, and median are retained for every stage.
+
+The mean compute times for the four grids are 0.0473, 0.0756, 0.2312, and 0.8884~s, respectively. At the largest grid, surface construction requires 0.5245~s, facet-based electromagnetic processing requires 0.3058~s, and echo formation requires 0.0581~s, accounting for 59.0\%, 34.4\%, and 6.5\% of $T_{\mathrm{comp}}$. Within the surface stage, the Lie correction is the largest nonlinear contribution at 0.2315~s, whereas the localized curl requires only 0.0325~s, or 3.7\% of the complete compute time. Increasing the facet count by approximately four from $512^2$ to $1024^2$ increases $T_{\mathrm{comp}}$ by a factor of 3.84. The observed high-end behavior is therefore close to linear in facet count, with the expected FFT logarithmic factor and a pulse-dependent echo cost that is comparatively weakly affected by the surface grid.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][4.8cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for measured runtime and scalability results}\\[5pt] (a) Mean compute time versus facet count for the four fixed-spacing grids, with standard-deviation error bars and the individual surface, EM, and echo contributions.\\[3pt] (b) Stage-wise runtime breakdown for background IFFT, Lie correction, directional short waves, local curl, facet/TSC processing, and statistical echo formation.\\[3pt] (c) Derived dataset wall time versus sample count for serial, eight-worker, and 32-worker execution; I/O-inclusive and compute-only quantities are distinguished.}}
+\caption{Measured computational scaling of the proposed generator and derived dataset-production cost. Grid enlargement increases physical area while retaining a 0.25-m sampling interval.}
+\label{fig:runtime_scalability}
+\end{figure*}
+
+To translate the per-sample measurements into dataset-scale cost, the serial estimate for $M$ independent samples is $T_{\mathrm{data}}=M\overline{T}_{\mathrm{sample}}$. A worker-level projection is additionally defined as
+\begin{equation}
+T_{\mathrm{data}}^{(W)}=\frac{M\overline{T}_{\mathrm{sample}}}{W\eta_W},
+\label{eq:dataset_wall_time}
+\end{equation}
+where $W$ is the worker count and $\eta_W$ is an explicitly assumed parallel efficiency. These projections are not measured parallel speedups. For the $1024^2$ production grid, the mean I/O time is 0.1689~s and the stored-sample time is 1.0574~s. Consequently, one million stored samples require an estimated 293.71~h, or 12.24~days, in serial. Assuming $\eta_8=0.85$ and $\eta_{32}=0.75$, the corresponding projections are 43.19 and 12.24~h. Because independent realizations have no intersample dependency, this dataset-level parallelism is available without changing the physical model, although actual throughput will also depend on memory capacity and storage bandwidth.
+
+A separate $40\times40~\mathrm{m}^2$ case is used to place the proposed method in the context of published 8--10-GHz calculations. The grid contains $160\times160$ vertices at the same 0.25-m spacing, 50,562 facets, and 4096 echo pulses. Over ten realizations, the proposed method requires $0.0635\pm0.0181$~s of compute time and 0.0142~s of mean I/O time, yielding 0.0776~s per stored sample. The corresponding serial compute-only estimate for one million realizations is 17.63~h, while the I/O-inclusive estimate is 21.57~h.
+
+For the same nominal $40\times40~\mathrm{m}^2$ area, Li \emph{et al.} report 1902.65~s for an 81-view full-polarization FPFSM sweep and 18,934.26~s for SSA-II at 8~GHz~\cite{li2019fpfsm}. Dividing only by the 81 reported incidence views gives derived values of 23.49 and 233.76~s per view, corresponding to contextual runtime ratios of approximately 370 and 3683 relative to the measured compute time of this work. Liu \emph{et al.} report 35.81~s for serial spectral sea generation, 15.13~s for four-node MPI generation, and 168,166, 53,914.8, and 25,471.3~s for serial, MPI, and MPI--OpenMP SSA-II calculations, respectively, for a 40-m 8-GHz case~\cite{liu2026parallel}. A 10-GHz multi-GPU PO--SBR sea--ship range--Doppler simulation over $300\times300~\mathrm{m}^2$ requires approximately 6480~s per image~\cite{zhang2024gpu}. These values demonstrate the markedly different throughput regimes of dataset-oriented statistical generation and high-order or imaging-oriented electromagnetic simulation, but they are not strict speedup measurements: the cited studies use different hardware, wavelength-dependent discretization, polarizations, angular samples, scene contents, and output products. In particular, the present TSC stage represents unresolved X-band roughness statistically and does not reproduce the full-wave interactions computed by SSA-II or PO--SBR.
+
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox[c][4.6cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for X-band computational-context comparison}\\[5pt] (a) Log-scale runtime of the proposed 9.4-GHz 40-m generator, derived per-view FPFSM and SSA-II values, reported serial/parallel 8-GHz spectral and SSA-II calculations, and the reported 10-GHz GPU sea--ship imaging case; methods are separated by comparison tier.\\[3pt] (b) Contextual runtime normalized by the measured compute time of this work.\\[3pt] (c) Serial dataset-cost projection for the closest 40-m comparison, with reported, derived, and measured quantities explicitly identified.}}
+\caption{Computational context at 8--10~GHz. Runtime ratios summarize the published timing records but do not constitute same-hardware, same-resolution, or same-output speedups.}
+\label{fig:xband_runtime_context}
+\end{figure*}
+
+No quantitative CFD runtime bar is included because the collected breaking-wave references do not report a timing case aligned with the present scene, resolution, and radar-output definition; assigning an assumed CFD runtime would therefore create an unverifiable comparison. The efficiency results nevertheless support the intended role of the proposed framework: rapid generation of diverse radar-ready sea-surface samples while retaining the validated nonlinear, directional, and localized curling structures. Its practical advantage follows from using FFT-based global synthesis, facet-wise statistical scattering, and localized prescribed curling instead of resolving breaking-wave hydrodynamics and full-wave electromagnetic interactions for every realization. This advantage is obtained through a deliberate fidelity--throughput tradeoff; the method is a scalable data generator rather than a replacement for CFD or full-wave solvers when detailed fluid evolution, diffraction, or coherent multipath fields are the quantities of interest.
