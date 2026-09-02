@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 19:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 20:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -159,30 +159,155 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+\c@ALC@unique=\count289
+\c@ALC@line=\count290
+\c@ALC@rem=\count291
+\c@ALC@depth=\count292
+\ALC@tlm=\skip55
+\algorithmicindent=\skip56
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count293
+\float@exts=\toks24
+\float@box=\box56
+\@float@everytoks=\toks25
+\@floatcapt=\box57
+)
+\@float@every@algorithm=\toks26
+\c@algorithm=\count294
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/tools/array.sty
+Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
+\col@sep=\dimen174
+\ar@mcellbox=\box58
+\extrarowheight=\dimen175
+\NC@list=\toks27
+\extratabsurround=\skip57
+\backup@length=\skip58
+\ar@cellbox=\box59
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen176
+\captionmargin=\dimen177
+\caption@leftmargin=\dimen178
+\caption@rightmargin=\dimen179
+\caption@width=\dimen180
+\caption@indent=\dimen181
+\caption@parindent=\dimen182
+\caption@hangindent=\dimen183
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEtablestring \footnotesize \bgroup \par \centering \@IEEEtabletopskipstrut {\normalfont \footnotesize #1}\\{\normalfont \footnotesize \scshape #2}\par \addvspace {0.5\baselineskip }\egroup \@IEEEtablecaptionsepspace \else \@IEEEfigurecaptionsepspace \setbox \@tempboxa \hbox {\normalfont \footnotesize {#1.}\nobreakspace \nobreakspace #2}\ifdim \wd \@tempboxa >\hsize \setbox \@tempboxa \hbox {\normalfont \footnotesize {#1.}\nobreakspace \nobreakspace }\parbox [t]{\hsize }{\normalfont \footnotesize \noindent \unhbox \@tempboxa #2}\else \ifCLASSOPTIONconference \hbox to\hsize {\normalfont \footnotesize \hfil \box \@tempboxa \hfil }\else \hbox to\hsize {\normalfont \footnotesize \box \@tempboxa \hfil }\fi \fi \fi  on input line 1175.
+)
+\c@KVtest=\count295
+\sf@farskip=\skip59
+\sf@captopadj=\dimen184
+\sf@capskip=\skip60
+\sf@nearskip=\skip61
+\c@subfigure=\count296
+\c@subfigure@save=\count297
+\c@lofdepth=\count298
+\c@subtable=\count299
+\c@subtable@save=\count300
+\c@lotdepth=\count301
+\sf@top=\skip62
+\sf@bottom=\skip63
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/sttools/stfloats.sty
+Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip settings
+\@dblbotnum=\count302
+\c@dblbotnumber=\count303
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks28
+\verbatim@line=\toks29
+\verbatim@in@stream=\read2
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen185
+\Gin@req@width=\dimen186
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
 ) (e:/Latex/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count289
-\l__pdf_internal_box=\box56
+\l__color_backend_stack_int=\count304
+\l__pdf_internal_box=\box60
 )
 No file 00_main.aux.
 \openout1 = `00_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 -- Lines per column: 58 (exact).
-(./sections/01_abstract.tex) (./sections/02_introduction.tex
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+(e:/Latex/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count305
+\scratchdimen=\dimen187
+\scratchbox=\box61
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count308
+\MPscratchDim=\dimen188
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks31
+) (e:/Latex/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) (./sections/01_abstract.tex) (./sections/02_introduction.tex
 
 LaTeX Warning: Citation `carretero2010statistical' on page 1 undefined on input line 10.
 
@@ -332,17 +457,57 @@ LaTeX Warning: Citation `liu2026parallel' on page 2 undefined on input line 20.
 LaTeX Warning: Citation `zhang2024gpu' on page 2 undefined on input line 20.
 
 ) (./sections/03_surfacemodeling.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
+ (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
-LaTeX Warning: Citation `elfouhaily1997unified' on page 2 undefined on input line 40.
+LaTeX Warning: Citation `elfouhaily1997unified' on page 2 undefined on input line 42.
 
 
 
 [2]
 
-LaTeX Warning: Reference `eq:directional_band_energy_constraint' on page 3 undefined on input line 83.
+LaTeX Warning: Reference `eq:directional_band_energy_constraint' on page 3 undefined on input line 86.
 
 
-LaTeX Warning: Reference `eq:localized_curl_framework' on page 3 undefined on input line 104.
+LaTeX Warning: Reference `eq:localized_curl_framework' on page 3 undefined on input line 107.
+
+
+
+
+LaTeX Warning: Citation `elfouhaily1997unified' on page 3 undefined on input line 143.
+
+
+
+[3]
+
+LaTeX Warning: Citation `zhang2023secondorder' on page 4 undefined on input line 191.
+
+
+LaTeX Warning: Reference `eq:second_order_lie' on page 4 undefined on input line 211.
+
+
+
+
+
+[4]
+
+LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 5 undefined on input line 327.
+
+
+Underfull \hbox (badness 1838) in paragraph at lines 353--354
+[]\OT1/ptm/m/n/10 To ob-tain uni-di-rec-tional tem-po-ral prop-a-ga-tion with-out
+ []
+
+
+Underfull \hbox (badness 1424) in paragraph at lines 353--354
+\OT1/ptm/m/n/10 vi-o-lat-ing Her-mi-tian sym-me-try, the pos-i-tive and neg-a-tive
+ []
 
 
 
@@ -361,7 +526,7 @@ If that doesn't work, type  X <return>  to quit.
 
 )
 
-[3] (./00_main.aux)
+[5] (./00_main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -375,18 +540,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2032 strings out of 473190
- 35670 string characters out of 5716852
- 449507 words of memory out of 5000000
- 25314 multiletter control sequences out of 15000+600000
- 589386 words of font info for 89 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 56i,17n,65p,2132b,199s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_main.pdf (3 pages, 166295 bytes).
+ 4702 strings out of 473190
+ 81784 string characters out of 5716852
+ 492795 words of memory out of 5000000
+ 27890 multiletter control sequences out of 15000+600000
+ 590631 words of font info for 95 fonts, out of 8000000 for 9000
+ 1145 hyphenation exceptions out of 8191
+ 57i,17n,65p,2132b,223s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 00_main.pdf (5 pages, 214601 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 101 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

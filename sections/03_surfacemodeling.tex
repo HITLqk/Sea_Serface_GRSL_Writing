@@ -1,3 +1,5 @@
+\section{Hierarchical Sea-Surface Modeling}
+
 \subsection{Overall Framework}
 
 The objective of the proposed framework is to generate physically interpretable sea-surface realizations under controllable environmental conditions while retaining a computational form suitable for radar echo simulation. The environmental parameter vector is denoted by
@@ -80,6 +82,7 @@ S_{s}^{\mathrm{dir}}(\boldsymbol k)\,\mathrm d\boldsymbol k
 S_{\mathrm{NL}}(\boldsymbol k)\,\mathrm d\boldsymbol k.
 \label{eq:directional_band_energy_constraint}
 \end{equation}
+
 Here, $\mathcal B_s[\cdot]$ is a band-pass operator, $\eta_s^{\mathrm{dir}}$ is the reconstructed directional component, and $S_s^{\mathrm{dir}}$ and $S_{\mathrm{NL}}$ are the corresponding spectral densities. Equation~\eqref{eq:directional_band_energy_constraint} prevents repeated energy injection into the selected band while allowing its directional distribution to be controlled.
 
 Third, a local crest score $Q(x,y)$ is computed from the normalized elevation, the slope along the dominant propagation direction, and the negative directional curvature. The curling center is selected as
@@ -121,3 +124,258 @@ The parametric surface is triangulated to form the mesh $\mathcal M_C$, which pr
 \label{eq:complete_simulation_chain}
 \end{equation}
 where $\mathcal G_E$, $\mathcal D_s$, $\mathcal C$, and $\mathcal R$ denote spectral synthesis, directional short-wave reconstruction, localized curling, and radar echo generation, respectively, and $\boldsymbol y$ is the simulated radar data. This hierarchical formulation preserves the efficiency of spectral synthesis over most of the domain and confines the additional curling computation to a sparse, physically selected region.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Nonlinear Background Sea Surface}
+\label{subsec:nonlinear_background}
+
+The background surface must preserve the prescribed directional spectrum while introducing the crest--trough asymmetry that is absent from a linear Gaussian realization.  We therefore first synthesize an Elfouhaily surface and then apply a dimensionally consistent second-order Riesz/Lie correction.  All operations are performed in the wind-aligned coordinate system, which makes the directional dependence explicit and avoids an artificial rotation of the resulting sea state.
+
+Let $k=(k_x^2+k_y^2)^{1/2}$ and let $\varphi=\operatorname{atan2}(k_y,k_x)$. The directional elevation spectrum is written as~\cite{elfouhaily1997unified}
+\begin{equation}
+ \Psi_{\eta}(k,\varphi)
+ =\frac{S(k)}{k}D(k,\varphi-\varphi_w),
+ \qquad
+ S(k)=\frac{B_l(k)+B_h(k)}{k^3},
+ \label{eq:elfouhaily_2d}
+\end{equation}
+where $B_l$ and $B_h$ denote the gravity- and capillary-wave curvature spectra, respectively, and $\varphi_w$ is the wind direction.  The directional spreading function used here is
+\begin{equation}
+ D(k,\Delta\varphi)
+ =\frac{1}{2\pi}\left[1+\Delta(k)\cos(2\Delta\varphi)\right],
+ \label{eq:directional_spreading}
+\end{equation}
+where $\Delta(k)$ is the Elfouhaily directionality parameter.  Thus, wind speed $U_{10}$ and inverse wave age $\Omega_c$ determine both the radial spectrum and its angular distribution.
+
+On a discrete wavenumber grid, the linear Fourier coefficients are sampled as
+\begin{equation}
+ \widehat{\eta}_L(\boldsymbol{k})
+ =\left[\Psi_{\eta}(\boldsymbol{k})
+ \Delta k_x\Delta k_y\right]^{1/2}\xi(\boldsymbol{k}),
+ \label{eq:linear_spectral_sampling}
+\end{equation}
+where $\xi$ is a zero-mean unit-variance complex Gaussian variable.  Hermitian symmetry, $\widehat{\eta}_L(-\boldsymbol{k})= \widehat{\eta}_L^{*}(\boldsymbol{k})$, is imposed explicitly so that $\eta_L(\boldsymbol{x})$ is real.  A single set of random phases is retained throughout the subsequent nonlinear transformation; consequently, differences between the linear and nonlinear surfaces arise from the model rather than from different random realizations.
+
+To construct the nonlinear correction, the wavenumbers parallel and normal to the wind are defined by
+\begin{equation}
+ \begin{bmatrix}k_a\\k_c\end{bmatrix}
+ =
+ \begin{bmatrix}
+  \cos\varphi_w & \sin\varphi_w\\
+  -\sin\varphi_w & \cos\varphi_w
+ \end{bmatrix}
+ \begin{bmatrix}k_x\\k_y\end{bmatrix}.
+ \label{eq:wind_aligned_wavenumbers}
+\end{equation}
+
+The associated Riesz fields are then obtained from
+\begin{equation}
+ \widehat{h}_a=-\mathrm{i}\frac{k_a}{k}
+ \widehat{\eta}_L\mathcal{B}_i,
+ \qquad
+ \widehat{h}_c=-\mathrm{i}\frac{k_c}{k}
+ \widehat{\eta}_L\mathcal{B}_i,
+ \label{eq:riesz_fields}
+\end{equation}
+where $\mathcal{B}_i$ is the input-band mask.  Because $k_a/k$ and $k_c/k$ are dimensionless, $h_a$ and $h_c$ retain the dimension of elevation.  This property is essential for a dimensionally valid second-order correction.
+
+Following the second-order Lie/Creamer construction used for nonlinear sea surfaces~\cite{zhang2023secondorder}, three quadratic terms are formed:
+\begin{align}
+ \widehat{L}_a
+ &=-\frac{k_a^2}{2k}\mathcal{F}\{h_a^2\},
+ &
+ \widehat{L}_{ac}
+ &=-\frac{k_a k_c}{k}\mathcal{F}\{h_a h_c\},
+ \nonumber\\
+ \widehat{L}_c
+ &=-\frac{k_c^2}{2k}\mathcal{F}\{h_c^2\}.
+ \label{eq:lie_quadratic_terms}
+\end{align}
+
+The resulting second-order correction is
+\begin{equation}
+ \widehat{L}
+ =\widehat{L}_a+\widehat{L}_{ac}+\widehat{L}_c.
+ \label{eq:second_order_lie}
+\end{equation}
+
+Each term in \eqref{eq:second_order_lie} has the dimension of elevation in the Fourier representation.  No dimensional wind-speed multiplier is attached to the correction; wind-speed dependence is carried by the input spectrum and by the slope-moment closure introduced below.
+
+The preliminary nonlinear spectrum is
+\begin{equation}
+ \widehat{\eta}_{N,0}
+ =\widehat{\eta}_L
+ +\beta\,\mathcal{P}_{H}
+ \left\{\mathcal{B}_o\widehat{L}\right\},
+ \label{eq:preliminary_nonlinear_spectrum}
+\end{equation}
+where $\beta$ is a dimensionless nonlinear-strength coefficient, $\mathcal{B}_o$ is the output-band mask, and $\mathcal{P}_{H}$ denotes Hermitian projection.  Unless stated otherwise, $\mathcal{B}_i$ and $\mathcal{B}_o$ are truncated at $4k_p$ and $8k_p$, respectively.  The two-to-one bandwidth ratio retains the quadratic interactions while suppressing unresolved high-wavenumber products.
+
+The Lie operation redistributes slope energy and therefore does not, by itself, guarantee agreement with the prescribed spectral mean-square slopes (MSSs). We close these second-order moments against the same Elfouhaily spectrum used to generate the surface.  For any spectrum $\widehat{\eta}$, the along- and cross-wind MSSs are evaluated as
+\begin{equation}
+ m_a=\sum_{\boldsymbol{k}}k_a^2
+ \left|\widehat{\eta}(\boldsymbol{k})\right|^2,
+ \qquad
+ m_c=\sum_{\boldsymbol{k}}k_c^2
+ \left|\widehat{\eta}(\boldsymbol{k})\right|^2.
+ \label{eq:directional_mss}
+\end{equation}
+
+A positive angular amplitude modifier is introduced as
+\begin{equation}
+ G(\varphi;U_{10})=
+ \exp\!\left\{\frac{1}{2}\left[
+ \lambda_0(U_{10})+
+ \lambda_2(U_{10})\cos 2(\varphi-\varphi_w)
+ \right]\right\}.
+ \label{eq:mss_closure_modifier}
+\end{equation}
+
+Independent calibration realizations are first used to determine two positive MSS scale factors, $s_a(U_{10})$ and $s_c(U_{10})$, by comparing the median raw nonlinear MSSs with the corresponding integrals of $\Psi_{\eta}$.  The logarithms of these factors are represented by smooth low-order functions of $\log U_{10}$ and are then held fixed for all validation realizations.  For a new realization, $\lambda_0$ and $\lambda_2$ are solved so that the dressed moments equal $s_a m_{a,0}$ and $s_c m_{c,0}$, where $(m_{a,0},m_{c,0})$ are the raw nonlinear moments.  This angular dressing is positive and does not alter the Fourier phases.  Hence, Cox--Munk and other empirical slope models are used only as external validation references, rather than as fitting constraints.
+
+The final background surface is expressed as
+\begin{equation}
+ \eta_N(\boldsymbol{x},t)
+ =\operatorname{Re}\!\left\{
+ \mathcal{F}^{-1}\!\left[
+ G(\varphi;U_{10})\widehat{\eta}_{N,0}
+ \mathrm{e}^{-\mathrm{i}\omega(k)t}
+ \right]\right\},
+ \label{eq:final_nonlinear_background}
+\end{equation}
+where $\omega(k)$ follows the gravity--capillary dispersion relation.  This construction preserves a controllable environmental spectrum and directional MSS while adding non-Gaussian crest geometry.  The MSS closure controls only second-order slope moments; local overturning geometry is introduced separately in the curling-wave stage described later.
+
+\begin{figure}[!t]
+ \centering
+\fbox{\parbox[c][3.2cm][c]{0.92\columnwidth}{\centering Placeholder for a comparison of the linear Elfouhaily realization and the nonlinear Lie-transformed background surface, including representative profiles and along-/cross-wind slope distributions.}} \caption{Illustration of the nonlinear background-surface construction. The linear and nonlinear cases use identical random phases.}
+ \label{fig:nonlinear_background_construction}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Directional Short-Scale Wind-Wave Construction}
+\label{subsec:directional_short_waves}
+
+The nonlinear background contains broadband short-wave energy, but its local wave crests do not necessarily exhibit the concentrated propagation direction required for the subsequent curling-wave construction. Directly superimposing an independently generated component would count the selected spectral energy twice. We therefore remove a resolved short-wave band from the nonlinear background and replace it with a random directional component of equal energy. This operation changes the organization of the band without introducing an artificial increase in its variance.
+
+Let $\lambda_{s,\min}$ and $\lambda_{s,\max}$ denote the prescribed wavelength limits. The corresponding wavenumber interval is
+\begin{equation}
+ k_l=\frac{2\pi}{\lambda_{s,\max}},
+ \qquad
+ k_h=\frac{2\pi}{\lambda_{s,\min}}.
+ \label{eq:short_wave_band_limits}
+\end{equation}
+A smooth radial band-pass window $W_s(k)$ is used to avoid ringing at the two band edges:
+\begin{equation}
+W_s(k)=
+\begin{cases}
+0, & k\leq k_l^- \text{ or } k\geq k_h^+,\\
+\frac{1}{2}\!\left[1-\cos\!\left(\pi\frac{k-k_l^-}{k_l-k_l^-}\right)\right], & k_l^-<k<k_l,\\
+1, & k_l\leq k\leq k_h,\\
+\frac{1}{2}\!\left[1+\cos\!\left(\pi\frac{k-k_h}{k_h^+-k_h}\right)\right], & k_h<k<k_h^+,
+\end{cases}
+\label{eq:smooth_short_wave_window}
+\end{equation}
+where $k_l^-=(1-\epsilon_b)k_l$, $k_h^+=(1+\epsilon_b)k_h$, and $\epsilon_b$ controls the transition width. The removed component and the retained residual are
+\begin{align}
+ \eta_{s,r}(\boldsymbol{x})
+ &=\mathcal{F}^{-1}\!\left\{W_s(k)\widehat{\eta}_N(\boldsymbol{k})\right\},
+ \nonumber\\
+ \eta_r(\boldsymbol{x})
+ &=\eta_N(\boldsymbol{x})-\eta_{s,r}(\boldsymbol{x}).
+ \label{eq:background_band_separation}
+\end{align}
+
+The replacement spectrum combines a log-wavenumber envelope and an angular concentration function. Let $\boldsymbol{e}_s=(\cos\psi_s,\sin\psi_s)$ be the prescribed propagation direction and define
+\begin{align}
+ k_0&=\sqrt{k_lk_h},
+ &
+ \sigma_k&=\frac{1}{4}\log\!\left(\frac{k_h}{k_l}\right),
+ \nonumber\\
+ \theta_a&=\cos^{-1}\!\left(
+ \frac{|\boldsymbol{k}\cdot\boldsymbol{e}_s|}{k}\right).
+ \label{eq:short_wave_shape_parameters}
+\end{align}
+The nonnegative spectral shape is then written as
+\begin{align}
+ \Phi_s(\boldsymbol{k})
+ &=W_s(k)
+ \exp\!\left[-\frac{\log^2(k/k_0)}{2\sigma_k^2}\right]
+ \nonumber\\
+ &\quad\times
+ \exp\!\left[-\frac{\theta_a^2}{2\sigma_\theta^2}\right].
+ \label{eq:directional_short_wave_shape}
+\end{align}
+where $\sigma_\theta$ determines the directional spreading. The use of $|\boldsymbol{k}\cdot\boldsymbol{e}_s|$ produces an axially symmetric spectrum, which is required for a real-valued instantaneous surface; the physical traveling direction is assigned separately through the temporal phase. This concentrated angular distribution is consistent with the observed directional sensitivity of short wind waves~\cite{sergievskaya2024shortwaves}.
+
+A preliminary Hermitian spectrum is sampled as
+\begin{equation}
+ \widehat{\eta}_{s,0}(\boldsymbol{k})
+ =\mathcal{P}_H\!\left\{\sqrt{\Phi_s(\boldsymbol{k})}\,\xi_s(\boldsymbol{k})\right\},
+ \label{eq:short_wave_random_sampling}
+\end{equation}
+where $\xi_s$ is an independent unit-variance complex Gaussian field and $\mathcal{P}_H$ denotes Hermitian projection. Its amplitude is normalized using the energy of the removed band:
+\begin{equation}
+ \alpha_s=\left[
+ \rho_s\frac{\displaystyle\sum_{\boldsymbol{k}}
+ \left|W_s(k)\widehat{\eta}_N(\boldsymbol{k})\right|^2}
+ {\displaystyle\sum_{\boldsymbol{k}}
+ \left|\widehat{\eta}_{s,0}(\boldsymbol{k})\right|^2}
+ \right]^{1/2},
+ \label{eq:short_wave_energy_normalization}
+\end{equation}
+where $\rho_s$ is the replacement-energy ratio. Setting $\rho_s=1$ gives
+\begin{equation}
+ \sum_{\boldsymbol{k}}\left|\alpha_s\widehat{\eta}_{s,0}\right|^2
+ =\sum_{\boldsymbol{k}}\left|W_s\widehat{\eta}_N\right|^2,
+ \label{eq:equal_energy_replacement}
+\end{equation}
+so the reconstructed short-wave component and the removed background band have equal variance by Parseval's theorem.
+
+To obtain unidirectional temporal propagation without violating Hermitian symmetry, the positive and negative wavenumber branches are advanced with opposite signed frequencies:
+\begin{align}
+ \widehat{\eta}_s(\boldsymbol{k},t)
+ &=\alpha_s\widehat{\eta}_{s,0}(\boldsymbol{k})
+ \nonumber\\
+ &\quad\times\exp\!\left[-\mathrm{i}\,\omega(k)
+ \operatorname{sgn}(\boldsymbol{k}\cdot\boldsymbol{e}_s)t\right],
+ \nonumber\\
+ \omega(k)&=\sqrt{gk}.
+ \label{eq:directional_short_wave_evolution}
+\end{align}
+The sea surface after band replacement is therefore
+\begin{equation}
+ \eta_D(\boldsymbol{x},t)
+ =\eta_r(\boldsymbol{x},t)
+ +\operatorname{Re}\!\left\{
+ \mathcal{F}^{-1}\!\left[
+ \widehat{\eta}_s(\boldsymbol{k},t)
+ \right]\right\}.
+ \label{eq:directional_short_wave_surface}
+\end{equation}
+In the implementation, $\lambda_{s,\min}=1.5$~m, $\lambda_{s,\max}=5.0$~m, $\sigma_\theta=8^{\circ}$, $\epsilon_b=0.15$, and $\rho_s=1$ unless stated otherwise. The minimum wavelength is represented by at least six grid samples, preventing unresolved grid-scale oscillations from being interpreted as physical wind waves. The parameters may be varied to generate different dominant directions, ridge spacings, and directional spreads while retaining the energy supplied by the background sea state.
+
+\begin{figure}[!t]
+ \centering
+ \fbox{\parbox[c][3.4cm][c]{0.92\columnwidth}{\centering Placeholder for the removed background band, the equal-energy directional replacement component, and the resulting nonlinear sea surface.}}
+ \caption{Directional short-wave band replacement. The replacement redistributes the selected band in wavenumber and direction while preserving its energy.}
+ \label{fig:directional_short_wave_replacement}
+\end{figure}
