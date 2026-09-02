@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 20:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -457,61 +457,59 @@ LaTeX Warning: Citation `liu2026parallel' on page 2 undefined on input line 20.
 LaTeX Warning: Citation `zhang2024gpu' on page 2 undefined on input line 20.
 
 ) (./sections/03_surfacemodeling.tex
-LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
  (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
  (e:/Latex/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]\OT1/ptm/m/n/10 The pro-posed frame-work maps en-vi-ron-men-tal
+ []
 
-LaTeX Warning: Citation `elfouhaily1997unified' on page 2 undefined on input line 42.
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+\OT1/ptm/m/n/10 con-di-tions and ran-dom re-al-iza-tions to radar-ready
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+\OT1/ptm/m/n/10 dy-namic sea sur-faces. The en-vi-ron-men-tal in-put is
+ []
 
 
 
 [2]
 
-LaTeX Warning: Reference `eq:directional_band_energy_constraint' on page 3 undefined on input line 86.
+LaTeX Warning: Citation `elfouhaily1997unified' on page 3 undefined on input line 47.
 
 
-LaTeX Warning: Reference `eq:localized_curl_framework' on page 3 undefined on input line 107.
+LaTeX Warning: Citation `zhang2023secondorder' on page 3 undefined on input line 66.
 
 
 
 
-LaTeX Warning: Citation `elfouhaily1997unified' on page 3 undefined on input line 143.
+LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 3 undefined on input line 100.
 
 
 
 [3]
 
-LaTeX Warning: Citation `zhang2023secondorder' on page 4 undefined on input line 191.
+LaTeX Warning: Citation `holliday1998steepening' on page 4 undefined on input line 136.
 
 
-LaTeX Warning: Reference `eq:second_order_lie' on page 4 undefined on input line 211.
+LaTeX Warning: Citation `li2017facet' on page 4 undefined on input line 136.
 
 
-
-
-
-[4]
-
-LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 5 undefined on input line 327.
-
-
-Underfull \hbox (badness 1838) in paragraph at lines 353--354
-[]\OT1/ptm/m/n/10 To ob-tain uni-di-rec-tional tem-po-ral prop-a-ga-tion with-out
- []
-
-
-Underfull \hbox (badness 1424) in paragraph at lines 353--354
-\OT1/ptm/m/n/10 vi-o-lat-ing Her-mi-tian sym-me-try, the pos-i-tive and neg-a-tive
- []
+LaTeX Warning: Citation `dong2023plunging' on page 4 undefined on input line 136.
 
 
 
-) (./00_main.bbl
+
+
+[4]) (./00_main.bbl
 
 ./00_main.bbl:23: LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -526,7 +524,11 @@ If that doesn't work, type  X <return>  to quit.
 
 )
 
-[5] (./00_main.aux)
+
+
+[5
+
+] (./00_main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -540,15 +542,15 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 4702 strings out of 473190
- 81784 string characters out of 5716852
- 492795 words of memory out of 5000000
- 27890 multiletter control sequences out of 15000+600000
+ 4695 strings out of 473190
+ 81501 string characters out of 5716852
+ 496795 words of memory out of 5000000
+ 27883 multiletter control sequences out of 15000+600000
  590631 words of font info for 95 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  57i,17n,65p,2132b,223s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_main.pdf (5 pages, 214601 bytes).
+<e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 00_main.pdf (5 pages, 209498 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
