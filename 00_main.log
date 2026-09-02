@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 23:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  2 SEP 2026 23:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -267,8 +267,7 @@ Package: cite 2015/02/27  v 5.5
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count304
 \l__pdf_internal_box=\box60
-)
-No file 00_main.aux.
+) (./00_main.aux)
 \openout1 = `00_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -285,6 +284,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
+
 -- Lines per column: 58 (exact).
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
@@ -309,152 +309,12 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) (./sections/01_abstract.tex) (./sections/02_introduction.tex
 
-LaTeX Warning: Citation `carretero2010statistical' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `fiche2015xband' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `bocquet2022lga' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `melief2006seaspikes' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `rosenberg2013seaspike' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `elfouhaily1997unified' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `zhang2023secondorder' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `xie2024skewness' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Citation `xie2022convolutions' on page 1 undefined on input line 10.
-
-
-
-
-LaTeX Warning: Citation `ye2022improvedTSM' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `holliday1998steepening' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `sletten2003breaking' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `west2002plunging' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `west1998mmgtd' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `west1999ray' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `west2002multipath' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `zhao2005spilling' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `yang2011breaking' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `li2017facet' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `dong2023plunging' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Citation `west1998mmgtd' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `yang2011breaking' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `zhang2023secondorder' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `li2019fpfsm' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `ye2022improvedTSM' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `west2002plunging' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `west2002multipath' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Citation `zhao2005spilling' on page 1 undefined on input line 14.
-
 
 
 [1{e:/Latex/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{e:/Latex/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-
-LaTeX Warning: Citation `zhang2023secondorder' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `xie2024skewness' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `holliday1998steepening' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `west1999ray' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `li2017facet' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `dong2023plunging' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `li2017facet' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `dong2023plunging' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `xie2022convolutions' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `zhang2023secondorder' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `holliday1998steepening' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `li2017facet' on page 2 undefined on input line 16.
-
-
-LaTeX Warning: Citation `dong2023plunging' on page 2 undefined on input line 16.
-
-
-
-
-LaTeX Warning: Citation `li2019fpfsm' on page 2 undefined on input line 20.
-
-
-LaTeX Warning: Citation `liu2026parallel' on page 2 undefined on input line 20.
-
-
-LaTeX Warning: Citation `zhang2024gpu' on page 2 undefined on input line 20.
 
 ) (./sections/03_surfacemodeling.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
@@ -483,94 +343,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
 [2]
 
-LaTeX Warning: Citation `elfouhaily1997unified' on page 3 undefined on input line 47.
-
-
-LaTeX Warning: Citation `zhang2023secondorder' on page 3 undefined on input line 66.
-
-
-
-
-LaTeX Warning: Citation `sergievskaya2024shortwaves' on page 3 undefined on input line 100.
-
 
 
 [3]
 
-LaTeX Warning: Citation `holliday1998steepening' on page 4 undefined on input line 136.
-
-
-LaTeX Warning: Citation `li2017facet' on page 4 undefined on input line 136.
-
-
-LaTeX Warning: Citation `dong2023plunging' on page 4 undefined on input line 136.
-
-
-
 
 
 [4]
-
-LaTeX Warning: Citation `karimian2011refractivity' on page 5 undefined on input line 257.
-
-
-
-
-LaTeX Warning: Citation `ye2022improvedTSM' on page 5 undefined on input line 305.
 
 
 
 [5]) (./sections/04_validation.tex
 
 
-LaTeX Warning: Citation `cox1954measurement' on page 6 undefined on input line 25.
-
-
-LaTeX Warning: Citation `guerin2023seasurfaceslope' on page 6 undefined on input line 33.
-
-
-LaTeX Warning: Citation `gao2024generalized' on page 6 undefined on input line 33.
-
-
 
 [6]
-
-LaTeX Warning: Reference `fig:global_mss_low_wind' on page 7 undefined on input line 54.
-
-
-
-
-LaTeX Warning: Reference `fig:global_mss_high_wind' on page 7 undefined on input line 72.
 
 
 
 [7]
 
-LaTeX Warning: Citation `erinin2023plunging' on page 8 undefined on input line 87.
-
-
-
 
 
 [8]
 
-LaTeX Warning: Reference `eq:local_facet_scattering_proxy' on page 9 undefined on input line 151.
-
-
-
-
-LaTeX Warning: Citation `kim2002breakingwave' on page 9 undefined on input line 155.
-
 
 
 [9]
-
-LaTeX Warning: Reference `subsec:local_curl_geometry_validation' on page 10 undefined on input line 185.
-
-
-LaTeX Warning: Reference `subsec:local_electromagnetic_validation' on page 10 undefined on input line 185.
-
-
 
 
 
@@ -584,62 +383,42 @@ Underfull \vbox (badness 2384) has occurred while \output is active []
 [11]
 
 
-LaTeX Warning: Citation `li2019fpfsm' on page 12 undefined on input line 284.
 
-
-LaTeX Warning: Citation `liu2026parallel' on page 12 undefined on input line 284.
-
-
-LaTeX Warning: Citation `zhang2024gpu' on page 12 undefined on input line 284.
-
-
-
-[12]) (./sections/05_conclusion.tex) (./00_main.bbl
-
-./00_main.bbl:23: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.23 \end{thebibliography}
-                          
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-)
+[12]) (./sections/05_conclusion.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 
 
-[13] (./00_main.aux)
+[13]) (./00_main.bbl
+Underfull \hbox (badness 2277) in paragraph at lines 24--25
+[]\OT1/ptm/m/n/8 J. Carretero-Moya, J. Gismero-Menoyo, A. B. del Campo, and
+ []
+
+
+
+)
+
+[14] (./00_main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 4786 strings out of 473190
- 83646 string characters out of 5716852
- 496795 words of memory out of 5000000
- 27959 multiletter control sequences out of 15000+600000
- 594352 words of font info for 109 fonts, out of 8000000 for 9000
+ 4792 strings out of 473190
+ 83725 string characters out of 5716852
+ 498844 words of memory out of 5000000
+ 27962 multiletter control sequences out of 15000+600000
+ 595488 words of font info for 110 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  57i,17n,65p,2132b,262s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_main.pdf (13 pages, 303606 bytes).
+Output written on 00_main.pdf (14 pages, 312137 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 146 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
