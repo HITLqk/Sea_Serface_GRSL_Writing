@@ -143,58 +143,94 @@ where $h_q$ is a prescribed elevation quantile and $s_c$ is a near-crest slope t
 \begin{equation}
 \boldsymbol{x}_c=\underset{\boldsymbol{x}\in\mathcal{D}_c}{\arg\max}\;Q(\boldsymbol{x}),
 \qquad
-Q=w_h\widetilde{\eta}+w_\kappa\widetilde{(-\partial_u^2\eta_D)}+w_s\widetilde{\eta_s},
+Q=w_h\widetilde{\eta}
++w_\kappa\widetilde{(-\partial_u^2\eta_D)}
++w_s\widetilde{\eta_s},
 \label{eq:crest_selection_score}
 \end{equation}
-where tildes denote normalized positive quantities and $\eta_s$ is the directional short-wave component. This rule favors high crests with negative directional curvature and a locally strong organized short-wave contribution. It is used to place a parameterized breaking event and is not presented as a universal hydrodynamic breaking-onset criterion.
+where tildes denote normalized positive quantities and $\eta_s$ is the directional short-wave component. This rule favors high crests with negative directional curvature and a locally strong organized short-wave contribution. It is used to place a parameterized breaking event and is not presented as a universal hydrodynamic breaking-onset criterion. The individual detection gates and their joint selection are illustrated in Fig.~\ref{fig:curl_detection_conditions}.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]
+    {plotcode/output/01_curl_detection_conditions.pdf}
+    \caption{Breaking-eligible crest selection for $U_{10}=5~\mathrm{m/s}$,
+    $\Omega_c=0.84$, and $H_s=0.35~\mathrm{m}$ over a
+    $32\times32~\mathrm{m}^2$ surface. The detection uses an elevation
+    quantile of $0.88$, a slope-tolerance factor of $0.32$, and a
+    negative-curvature quantile of $0.70$. (a)--(c) Elevation, near-crest
+    slope, and curvature conditions. (d) Joint candidates, selected crest,
+    and local curling support.}
+    \label{fig:curl_detection_conditions}
+\end{figure}
 
 At $\boldsymbol{x}_c=(x_c,y_c)$, propagation and crestwise coordinates are defined as
 \begin{equation}
 \begin{bmatrix}u\\v\end{bmatrix}=
-\begin{bmatrix}\cos\psi_s&\sin\psi_s\\-\sin\psi_s&\cos\psi_s\end{bmatrix}
+\begin{bmatrix}
+\cos\psi_s&\sin\psi_s\\
+-\sin\psi_s&\cos\psi_s
+\end{bmatrix}
 \begin{bmatrix}x-x_c\\y-y_c\end{bmatrix}.
 \label{eq:curl_local_coordinates}
 \end{equation}
 Let $a=L_c/2$ and $b=W_c/2$ be the crestwise half-length and propagation-direction half-width. A compact cosine window is defined by
 \begin{equation}
-C(q)=\begin{cases}\frac{1}{2}[1+\cos(\pi q)],&|q|<1,\\0,&|q|\geq1.\end{cases}
+C(q)=
+\begin{cases}
+\frac{1}{2}[1+\cos(\pi q)],&|q|<1,\\
+0,&|q|\geq1.
+\end{cases}
 \label{eq:compact_cosine_window}
 \end{equation}
 To avoid a perfectly regular footprint, a small centerline displacement $u_c(v)$ and width factor $r(v)$ are introduced and $u_r=u-u_c(v)$ is used below. The core and transition supports are
 \begin{align}
-W_c&=C\!\left(\frac{u_r}{br(v)}\right)C\!\left(\frac{v}{a}\right),
+W_c&=C\!\left(\frac{u_r}{br(v)}\right)
+C\!\left(\frac{v}{a}\right),
 \nonumber\\
-W_t&=C\!\left(\frac{u_r}{(b+\ell_t)r(v)}\right)C\!\left(\frac{v}{a}\right),
+W_t&=C\!\left(\frac{u_r}{(b+\ell_t)r(v)}\right)
+C\!\left(\frac{v}{a}\right),
 \label{eq:curl_support_windows}
 \end{align}
 where $\ell_t>0$ extends the transition region beyond the rotation core. Both windows vanish continuously at their boundaries, while $W_t$ permits the neighboring non-overturned surface to evolve smoothly before returning to the unchanged background.
 
 The approaching crest is first modified without rotation. An asymmetric width
 \begin{equation}
-\sigma(u_r)=\begin{cases}\sigma_r,&u_r<0,\\\sigma_f,&u_r\geq0,\end{cases}
+\sigma(u_r)=
+\begin{cases}
+\sigma_r,&u_r<0,\\
+\sigma_f,&u_r\geq0,
+\end{cases}
 \qquad \sigma_f<\sigma_r,
 \label{eq:asymmetric_crest_width}
 \end{equation}
 produces a broader rear face and a steeper forward face. With $\sigma_e$ denoting the transition scale, the pre-rotation coordinates are
 \begin{align}
-z_p={}&\eta_D+A_c\exp\!\left[-\frac{u_r^2}{2\sigma^2(u_r)}\right]W_t
+z_p={}&\eta_D
++A_c\exp\!\left[-\frac{u_r^2}{2\sigma^2(u_r)}\right]W_t
 +A_e\exp\!\left[-\frac{u_r^2}{2\sigma_e^2}\right]W_t,
 \nonumber\\
-u_p={}&u+A_l\exp\!\left[-\frac{u_r^2}{2\sigma_e^2}\right]W_t.
+u_p={}&u
++A_l\exp\!\left[-\frac{u_r^2}{2\sigma_e^2}\right]W_t.
 \label{eq:pre_rotation_evolution}
 \end{align}
 Here, $A_c$ controls the local crest correction, whereas $A_e$ and $A_l$ produce the low-amplitude elevation and forward-lean changes across the wider evolution band. This separation prevents the curl from appearing as an isolated bump placed directly at the highest point.
 
 The rotation center is shifted by $d_c<0$ toward the approaching shoulder, and the local angle field is
 \begin{equation}
-\theta(u,v)=\theta_{\max}\exp\!\left[-\frac{(u_r-d_c)^2}{2(0.62b)^2}\right]C\!\left(\frac{v}{a}\right).
+\theta(u,v)=\theta_{\max}
+\exp\!\left[-\frac{(u_r-d_c)^2}{2(0.62b)^2}\right]
+C\!\left(\frac{v}{a}\right).
 \label{eq:curl_angle_field}
 \end{equation}
 The rotation axis is parallel to the crest direction, with pivot coordinates $u_0=u_c(v)+d_c+d_f$ and $z_0=\eta_D-d_p$, where $d_f$ is the forward offset and $d_p$ is the pivot depth. Defining $\Delta u=u_p-u_0$ and $\Delta z=z_p-z_0$, the rotated coordinates are
 \begin{equation}
 \begin{bmatrix}u_R\\z_R\end{bmatrix}=
 \begin{bmatrix}u_0\\z_0\end{bmatrix}+
-\begin{bmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{bmatrix}
+\begin{bmatrix}
+\cos\theta&\sin\theta\\
+-\sin\theta&\cos\theta
+\end{bmatrix}
 \begin{bmatrix}\Delta u\\\Delta z\end{bmatrix}.
 \label{eq:local_curl_rotation}
 \end{equation}
@@ -207,7 +243,38 @@ z'&=z_p+W_t(z_R-z_p),
 v'&=v.
 \label{eq:curl_transition_blending}
 \end{align}
-They are mapped back to the global frame by $x'=x_c+u'\cos\psi_s-v'\sin\psi_s$ and $y'=y_c+u'\sin\psi_s+v'\cos\psi_s$. Because the output is the parametric surface $\boldsymbol{r}_C(u,v)=[x',y',z']^{\mathrm{T}}$ rather than a height function $z=\eta(x,y)$, the geometry can represent locally overlapping horizontal projections.
+They are mapped back to the global frame by
+$x'=x_c+u'\cos\psi_s-v'\sin\psi_s$ and
+$y'=y_c+u'\sin\psi_s+v'\cos\psi_s$.
+Because the output is the parametric surface
+$\boldsymbol{r}_C(u,v)=[x',y',z']^{\mathrm{T}}$
+rather than a height function $z=\eta(x,y)$, the geometry can represent locally overlapping horizontal projections. The resulting global embedding and local overturning geometry are shown in Fig.~\ref{fig:curl_global_local_3d}.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]
+    {plotcode/output/02_curl_global_local_3d.pdf}
+    \caption{Global and local views of the generated curling wave for
+    $U_{10}=5~\mathrm{m/s}$, $\Omega_c=0.84$, and
+    $H_s=0.35~\mathrm{m}$. The curling patch uses a crestwise half-length
+    of $2.20~\mathrm{m}$, a core half-width of $0.42~\mathrm{m}$, and a
+    $0.58~\mathrm{m}$ transition width. (a) Curling event embedded in the
+    $32\times32~\mathrm{m}^2$ sea surface. (b) Local three-dimensional
+    forward-overturning geometry.}
+    \label{fig:curl_global_local_3d}
+\end{figure}
+
+The propagation-direction section in Fig.~\ref{fig:curl_center_profile} further illustrates the transition from the original crest through the pre-shaped state to the final multi-valued curling profile. In particular, the forward branch advances beyond the original crest before turning downward, while the wider transition support preserves continuity with the surrounding sea surface.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.5\columnwidth]
+    {plotcode/output/03_curl_center_profile.pdf}
+    \caption{Propagation-direction section of the selected curling event
+    for $U_{10}=5~\mathrm{m/s}$ and $H_s=0.35~\mathrm{m}$, showing the
+    original, pre-shaped, and final curled crest profiles.}
+    \label{fig:curl_center_profile}
+\end{figure}
 
 The core event mask and the actual overturning mask are distinguished as
 \begin{align}
@@ -226,20 +293,14 @@ Finally, the original structured-grid connectivity is retained to triangulate bo
 &
 \boldsymbol{e}_{ik}&=\boldsymbol{r}_k-\boldsymbol{r}_i,
 \nonumber\\
-A_f&=\frac{1}{2}\left\|\boldsymbol{e}_{ij}\times\boldsymbol{e}_{ik}\right\|,
+A_f&=\frac{1}{2}
+\left\|\boldsymbol{e}_{ij}\times\boldsymbol{e}_{ik}\right\|,
 &
-\boldsymbol{n}_f&=\frac{\boldsymbol{e}_{ij}\times\boldsymbol{e}_{ik}}{2A_f}.
+\boldsymbol{n}_f&=
+\frac{\boldsymbol{e}_{ij}\times\boldsymbol{e}_{ik}}{2A_f}.
 \label{eq:curl_facet_geometry}
 \end{align}
 Preserving the connectivity is essential because retriangulation in the $(x',y')$ projection can incorrectly connect the upper and lower portions of an overturned crest. The paired baseline and curled meshes therefore have identical face indices, allowing changes in local area, orientation, visibility, and radar scattering to be attributed to the curling transformation.
-
-\begin{figure}[!t]
-\centering
-\fbox{\parbox[c][4.0cm][c]{0.92\columnwidth}{\centering Placeholder for crest candidates and selected center, core and transition supports, propagation-direction profile before and after curling, and the final triangulated overturning patch.}}
-\caption{Localized curling-wave construction on a selected directional crest. The rotation begins on the approaching shoulder and is blended into the background through a wider transition region.}
-\label{fig:localized_curl_construction}
-\end{figure}
-
 
 
 
@@ -253,94 +314,212 @@ Preserving the connectivity is essential because retriangulation in the $(x',y')
 \subsection{Facet-Based Scattering and Radar Echo Generation}
 \label{subsec:radar_echo_generation}
 
-The curled surface is converted into radar data through a facet-based mean-power model followed by resolution-cell statistical echo synthesis. The electromagnetic component does not constitute a new full-wave or two-scale scattering theory. Instead, the resolved triangular geometry determines local orientation, projected area, range, antenna weighting, and visibility, while unresolved X-band roughness is represented by the Technology Service Corporation (TSC) empirical sea-reflectivity kernel. This distinction is important because the TSC acronym refers to the empirical model rather than to a ``two-scale composite'' abbreviation~\cite{karimian2011refractivity}.
+The curled sea surface is converted into radar data using a facet-based conditional-mean scattering model followed by resolution-cell statistical echo synthesis. The electromagnetic component is not intended as a new full-wave or two-scale scattering theory. Instead, the resolved sea-surface geometry determines the local facet orientation, projected area, slant range, antenna weighting, and visibility, whereas the unresolved X-band roughness within each medium-scale facet is represented statistically through the Technology Service Corporation (TSC) empirical sea-reflectivity kernel. This scale separation is illustrated schematically in Fig.~\ref{fig:facet_scale_representation}, where the medium-scale sea geometry is explicitly resolved while the embedded short-wave structure is not discretized into individual electromagnetic scatterers. The distinction is also important terminologically: here, TSC denotes the empirical model developed by Technology Service Corporation rather than an abbreviation of ``two-scale composite'' scattering~\cite{karimian2011refractivity}.
 
-For facet $m$, let $\boldsymbol{r}_m$, $\boldsymbol{n}_m$, and $A_m$ denote its center, unit normal, and surface area, and let $\boldsymbol{r}_R$ be the radar position. The slant range and look direction from the facet to the radar are
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{plotcode/facet_scale_schematic.png}
+    \caption{Scale separation between the resolved medium-scale sea facet and the unresolved short-wave roughness represented statistically.}
+    \label{fig:facet_scale_representation}
+\end{figure}
+
+For facet $m$, let $\boldsymbol{r}_m$, $\boldsymbol{n}_m$, and $A_m$ denote its center position, unit normal, and surface area, respectively, and let $\boldsymbol{r}_R$ denote the radar position. The slant range and unit look direction from the facet toward the radar are
 \begin{equation}
 R_m=\|\boldsymbol{r}_R-\boldsymbol{r}_m\|,
 \qquad
-\boldsymbol{s}_m=\frac{\boldsymbol{r}_R-\boldsymbol{r}_m}{R_m}.
+\boldsymbol{s}_m=
+\frac{\boldsymbol{r}_R-\boldsymbol{r}_m}{R_m}.
 \label{eq:facet_radar_geometry}
 \end{equation}
-The local grazing angle and relative wind azimuth are
+The corresponding local grazing angle and relative wind azimuth are
 \begin{equation}
-\phi_m=\sin^{-1}(\boldsymbol{n}_m\cdot\boldsymbol{s}_m),
+\phi_m=
+\sin^{-1}
+\left(
+\boldsymbol{n}_m\cdot\boldsymbol{s}_m
+\right),
 \qquad
-\vartheta_m=\operatorname{wrap}_{[-\pi,\pi]}(\varphi_w-\varphi_m),
+\vartheta_m=
+\operatorname{wrap}_{[-\pi,\pi]}
+\left(
+\varphi_w-\varphi_m
+\right),
 \label{eq:facet_grazing_wind_angles}
 \end{equation}
-where $\varphi_m$ is the radar azimuth viewed from the facet. Back-facing facets, facets below the minimum grazing angle, and facets hidden by a larger preceding horizon angle are removed through a binary visibility factor $V_m$. This update makes the curling transformation affect the return through both facet orientation and self-shadowing.
+where $\varphi_m$ is the radar azimuth viewed from the facet and $\varphi_w$ is the wind direction. Back-facing facets, facets below the prescribed minimum grazing angle, and facets occluded by a larger preceding horizon angle are excluded through a binary visibility factor $V_m$. Consequently, the curling transformation modifies the radar return through both the local facet orientation and geometry-induced self-shadowing.
 
-The conditional mean NRCS is evaluated as the sum of an empirical diffuse term and a quasi-specular term:
+The conditional mean normalized radar cross section (NRCS) of facet $m$ is evaluated as the sum of empirical diffuse and quasi-specular contributions,
 \begin{equation}
-\sigma_m^0=\sigma_d^0(\lambda,S,\phi_m,\vartheta_m,U_{10})+\sigma_q^0(\lambda,S,\phi_m),
+\sigma_m^0
+=
+\sigma_d^0
+\left(
+\lambda,S,\phi_m,\vartheta_m,U_{10}
+\right)
++
+\sigma_q^0
+\left(
+\lambda,S,\phi_m
+\right),
 \label{eq:tsc_total_nrcs}
 \end{equation}
-where $S$ is the Douglas sea-state index and $\lambda$ is the radar wavelength. In the implemented HH-polarized kernel,
+where $S$ denotes the Douglas sea-state index, $U_{10}$ is the $10$-m wind speed, and $\lambda$ is the radar wavelength. For the implemented HH-polarized TSC kernel,
 \begin{align}
-\sigma_d^0={}&\frac{1.7\times10^{-5}\sqrt{\phi_m}}{(3.2808\lambda+0.05)^{1.8}}
+\sigma_d^0
+={}&
+\frac{
+1.7\times10^{-5}\sqrt{\phi_m}
+}{
+(3.2808\lambda+0.05)^{1.8}
+}
 F_aF_UF_\vartheta F_p,
 \nonumber\\
-\sigma_q^0={}&\mu\cot^2\beta\exp\!\left[-\frac{\cot^2\phi_m}{\tan^2\beta}\right],
+\sigma_q^0
+={}&
+\mu\cot^2\beta
+\exp
+\left[
+-\frac{\cot^2\phi_m}{\tan^2\beta}
+\right],
 \label{eq:tsc_diffuse_quasi_terms}
 \end{align}
 with
 \begin{align}
-\chi&=\frac{4.5416\phi_m(3.2808\sigma_H+0.25)}{\lambda},
+\chi
+&=
+\frac{
+4.5416\phi_m
+(3.2808\sigma_H+0.25)
+}{
+\lambda
+},
 \nonumber\\
-F_a&=\frac{\chi^{1.5}}{1+\chi^{1.5}},
+F_a
+&=
+\frac{\chi^{1.5}}{1+\chi^{1.5}},
 \qquad
-F_U=\left(\frac{1.9438U_{10}+4}{15}\right)^{p},
+F_U
+=
+\left(
+\frac{1.9438U_{10}+4}{15}
+\right)^p,
 \nonumber\\
-F_p&=1-0.6\sin^2\vartheta_m,
+F_p
+&=
+1-0.6\sin^2\vartheta_m,
 \qquad
-F_\vartheta=\exp(\Gamma_\vartheta),
+F_\vartheta
+=
+\exp(\Gamma_\vartheta),
 \nonumber\\
-\Gamma_\vartheta&=0.3\cos\vartheta_m\exp(-\phi_m/0.17)
+\Gamma_\vartheta
+&=
+0.3\cos\vartheta_m
+\exp(-\phi_m/0.17)
 \nonumber\\
-&\quad\times(10.7636\lambda^2+0.005)^{-0.2},
+&\quad\times
+(10.7636\lambda^2+0.005)^{-0.2},
 \label{eq:tsc_empirical_factors}
 \end{align}
-where $\sigma_H=0.03505S^{1.95}$ and $p$, $\mu$, and $\beta$ follow the standard wavelength-, grazing-angle-, and sea-state-dependent TSC parameterization. The dB output is converted to linear NRCS before any area weighting. The empirical kernel is used because it provides a low-cost conditional mean for large numbers of facets; physics-based two-scale models remain relevant independent references, particularly in the transition region where Bragg and quasi-specular mechanisms coexist~\cite{ye2022improvedTSM}.
+where $\sigma_H=0.03505S^{1.95}$, and $p$, $\mu$, and $\beta$ follow the standard wavelength-, grazing-angle-, and sea-state-dependent TSC parameterization. The TSC output is converted from decibels to linear NRCS before area weighting. This empirical kernel is adopted because it provides a computationally inexpensive conditional mean for a large number of sea-surface facets. Physics-based two-scale scattering models nevertheless remain useful independent references, particularly within the transition region where Bragg and quasi-specular mechanisms coexist~\cite{ye2022improvedTSM}.
 
-The horizontal projected area of facet $m$ is $A_{h,m}=A_m\max(\boldsymbol{n}_m\cdot\boldsymbol{e}_z,0)$, and its monostatic RCS contribution is
+The horizontal projected area of facet $m$ is
 \begin{equation}
-\sigma_m=V_m\sigma_m^0A_{h,m}.
+A_{h,m}
+=
+A_m
+\max
+\left(
+\boldsymbol{n}_m\cdot\boldsymbol{e}_z,0
+\right),
+\label{eq:facet_projected_area}
+\end{equation}
+and the corresponding monostatic radar cross-section contribution is
+\begin{equation}
+\sigma_m
+=
+V_m\sigma_m^0A_{h,m}.
 \label{eq:facet_rcs_contribution}
 \end{equation}
-Let $G_m$ denote the one-way antenna power gain. The mean received power accumulated in range cell $b$ is
+Thus, the empirical NRCS represents the unresolved local scattering behavior, whereas the explicitly modeled facet geometry controls the effective scattering area and visibility.
+
+Let $G_m$ denote the one-way antenna power gain associated with facet $m$. The conditional mean received power accumulated in range cell $b$ is
 \begin{equation}
-P_b=\sum_{m\in\mathcal{I}_b}\frac{P_t\lambda^2G_m^2}{(4\pi)^3R_m^4}\sigma_m,
+P_b
+=
+\sum_{m\in\mathcal{I}_b}
+\frac{
+P_t\lambda^2G_m^2
+}{
+(4\pi)^3R_m^4
+}
+\sigma_m,
 \label{eq:range_cell_mean_power}
 \end{equation}
-where $\mathcal{I}_b$ contains all visible facets assigned to the cell and $P_t$ is the transmitted peak power. The summation is performed at the conditional-power level rather than by solving mutual electromagnetic interactions among all facets.
-
-Slow-time variability is introduced at the resolution-cell level. A unit-power complex speckle process is formed from fast and slow components,
-\begin{align}
-s_{n,b}&=\sqrt{1-f_s}\,s_{n,b}^{(f)}+\sqrt{f_s}\,s_{n,b}^{(s)},
-\nonumber\\
-s_{n,b}^{(j)}&=\rho_j s_{n-1,b}^{(j)}+\sqrt{1-\rho_j^2}\,w_{n,b}^{(j)}.
-\label{eq:two_time_scale_speckle}
-\end{align}
-where $w_{n,b}^{(j)}$ is a circular complex Gaussian innovation and $\rho_j=\exp[-1/(f_{\mathrm{PRF}}\tau_j)]$. A positive correlated texture $T_{n,b}$ is generated independently and normalized so that $\mathbb{E}[T_{n,b}]=1$. Thus, texture and speckle alter intermittency and temporal persistence without changing the conditional mean power supplied by the facet model.
-
-Before pulse compression, the complex baseband return is
-\begin{equation}
-y_{n,b}^{(0)}=\sqrt{P_bT_{n,b}}\,s_{n,b}\exp\!\left(-\mathrm{i}\frac{4\pi R_b}{\lambda}\right)+n_{n,b},
-\label{eq:resolution_cell_complex_echo}
-\end{equation}
-where $n_{n,b}$ is receiver noise. With the normalized range impulse response $h_b$, the simulated echo is
-\begin{equation}
-y_{n,b}=\sum_{q}h_qy_{n,b-q}^{(0)}.
-\label{eq:pulse_compressed_echo}
-\end{equation}
-The range--time intensity image is formed from $I_{n,b}=|y_{n,b}|^2$ and displayed using a common reference level across the compared groups. Echo amplitudes or intensities extracted from a predeclared homogeneous range interval are then used for the distribution, tail-probability, temporal-correlation, and sea-spike analyses described in the validation section.
-
-This implementation is a scalable conditional-mean scattering and statistical echo generator, not a coherent per-facet, per-pulse full-wave solver. The TSC kernel does not explicitly model crest diffraction, foam volume scattering, spray, or multipath between overturning faces. Consequently, changes between paired noncurling and curling cases quantify the response produced within the adopted geometry, projected-area, local-angle, visibility, and empirical-reflectivity model; they are not interpreted as the complete electromagnetic response of a real breaking wave.
+where $\mathcal{I}_b$ denotes the set of visible facets assigned to range cell $b$, and $P_t$ is the transmitted peak power. The summation is therefore carried out at the conditional-power level rather than through coherent evaluation of mutual electromagnetic interactions among all surface facets. The complete computational chain from the resolved sea-surface representation to the synthesized range--time echo is summarized in Fig.~\ref{fig:facet_echo_generation_flowchart}.
 
 \begin{figure}[!t]
-\centering
-\fbox{\parbox[c][3.8cm][c]{0.92\columnwidth}{\centering Placeholder for facet viewing geometry, local grazing angle and visibility, range-bin power accumulation, correlated speckle/texture modulation, pulse compression, and the resulting RTI image.}}
-\caption{Facet-based sea-scattering and radar-echo synthesis chain.}
-\label{fig:radar_echo_generation}
+    \centering
+    \includegraphics[width=\columnwidth]{plotcode/facet_echo_generation_flowchart.png}
+    \caption{Processing flow of the facet-based scattering model and statistical radar echo generation.}
+    \label{fig:facet_echo_generation_flowchart}
 \end{figure}
+
+Slow-time variability is introduced at the resolution-cell level rather than independently for every unresolved subfacet scatterer. A unit-power complex speckle process is constructed from fast and slow components,
+\begin{align}
+s_{n,b}
+&=
+\sqrt{1-f_s}\,
+s_{n,b}^{(f)}
++
+\sqrt{f_s}\,
+s_{n,b}^{(s)},
+\nonumber\\
+s_{n,b}^{(j)}
+&=
+\rho_j s_{n-1,b}^{(j)}
++
+\sqrt{1-\rho_j^2}\,
+w_{n,b}^{(j)},
+\label{eq:two_time_scale_speckle}
+\end{align}
+where $w_{n,b}^{(j)}$ denotes a circular complex Gaussian innovation and
+\begin{equation}
+\rho_j=
+\exp
+\left[
+-\frac{1}{f_{\mathrm{PRF}}\tau_j}
+\right].
+\end{equation}
+A positive correlated texture process $T_{n,b}$ is generated independently and normalized such that $\mathbb{E}[T_{n,b}]=1$. Hence, the texture and speckle components modify the intermittency and temporal persistence of the simulated return without changing the conditional mean power supplied by the facet-based scattering model.
+
+Before pulse compression, the complex baseband return in range cell $b$ is expressed as
+\begin{equation}
+y_{n,b}^{(0)}
+=
+\sqrt{P_bT_{n,b}}\,
+s_{n,b}
+\exp
+\left(
+-\mathrm{i}\frac{4\pi R_b}{\lambda}
+\right)
++
+n_{n,b},
+\label{eq:resolution_cell_complex_echo}
+\end{equation}
+where $n_{n,b}$ denotes receiver noise and $R_b$ is the representative slant range of the cell. With the normalized range impulse response $h_q$, the pulse-compressed echo is
+\begin{equation}
+y_{n,b}
+=
+\sum_q
+h_q
+y_{n,b-q}^{(0)}.
+\label{eq:pulse_compressed_echo}
+\end{equation}
+The range--time intensity (RTI) image is then obtained from
+\begin{equation}
+I_{n,b}=|y_{n,b}|^2,
+\end{equation}
+and a common reference level is used when displaying and comparing different simulation groups. Echo amplitudes or intensities extracted from a predeclared homogeneous range interval are subsequently used for the distribution, tail-probability, temporal-correlation, and sea-spike analyses described in the validation section.
+
+The resulting implementation should therefore be interpreted as a scalable conditional-mean scattering and statistical echo generator rather than a coherent per-facet, per-pulse full-wave solver. In particular, the TSC empirical kernel does not explicitly represent crest diffraction, foam volume scattering, spray, or multipath interactions between overturning faces. Consequently, differences between paired noncurling and curling cases quantify the radar response induced within the adopted geometry, projected-area, local-angle, visibility, and empirical-reflectivity framework; they should not be interpreted as the complete electromagnetic response of a real breaking wave.

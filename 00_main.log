@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  3 SEP 2026 16:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  3 SEP 2026 20:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -353,17 +353,52 @@ Package pdftex.def Info: plotcode/output/Fig_IIA_nonlinear_directional_4panel.pd
 (pdftex.def)             Requested size: 252.0pt x 190.36919pt.
 
 
+<plotcode/output/01_curl_detection_conditions.pdf, id=27, 434.62375pt x 397.485pt>
+File: plotcode/output/01_curl_detection_conditions.pdf Graphic file (type pdf)
+<use plotcode/output/01_curl_detection_conditions.pdf>
+Package pdftex.def Info: plotcode/output/01_curl_detection_conditions.pdf  used on input line 156.
+(pdftex.def)             Requested size: 252.0pt x 230.46867pt.
 
 
-[4 <./plotcode/output/Fig_IIA_nonlinear_directional_4panel.pdf>]
+[4 <./plotcode/output/Fig_IIA_nonlinear_directional_4panel.pdf> <./plotcode/output/01_curl_detection_conditions.pdf>]
+<plotcode/output/02_curl_global_local_3d.pdf, id=2823, 516.93124pt x 252.945pt>
+File: plotcode/output/02_curl_global_local_3d.pdf Graphic file (type pdf)
+<use plotcode/output/02_curl_global_local_3d.pdf>
+Package pdftex.def Info: plotcode/output/02_curl_global_local_3d.pdf  used on input line 256.
+(pdftex.def)             Requested size: 252.0pt x 123.3073pt.
+<plotcode/output/03_curl_center_profile.pdf, id=2824, 242.9075pt x 160.6pt>
+File: plotcode/output/03_curl_center_profile.pdf Graphic file (type pdf)
+<use plotcode/output/03_curl_center_profile.pdf>
+Package pdftex.def Info: plotcode/output/03_curl_center_profile.pdf  used on input line 272.
+(pdftex.def)             Requested size: 126.0pt x 83.30417pt.
 
 
 
-[5]) (./sections/04_validation.tex
+
+[5 <./plotcode/output/02_curl_global_local_3d.pdf> <./plotcode/output/03_curl_center_profile.pdf>]
+<plotcode/facet_scale_schematic.png, id=2852, 1453.43pt x 1090.0725pt>
+File: plotcode/facet_scale_schematic.png Graphic file (type png)
+<use plotcode/facet_scale_schematic.png>
+Package pdftex.def Info: plotcode/facet_scale_schematic.png  used on input line 321.
+(pdftex.def)             Requested size: 126.0pt x 94.49289pt.
+
+Underfull \hbox (badness 1983) in paragraph at lines 351--352
+[]\OT1/ptm/m/n/10 The con-di-tional mean nor-mal-ized radar cross sec-tion
+ []
+
+
+Underfull \vbox (badness 2285) has occurred while \output is active []
 
 
 
-[6]
+<plotcode/facet_echo_generation_flowchart.png, id=2853, 1780.6525pt x 890.32625pt>
+File: plotcode/facet_echo_generation_flowchart.png Graphic file (type png)
+<use plotcode/facet_echo_generation_flowchart.png>
+Package pdftex.def Info: plotcode/facet_echo_generation_flowchart.png  used on input line 463.
+(pdftex.def)             Requested size: 252.0pt x 125.98976pt.
+
+
+[6 <./plotcode/facet_scale_schematic.png (PNG copy)> <./plotcode/facet_echo_generation_flowchart.png (PNG copy)>]) (./sections/04_validation.tex
 
 
 
@@ -378,9 +413,6 @@ Package pdftex.def Info: plotcode/output/Fig_IIA_nonlinear_directional_4panel.pd
 [9]
 
 
-Underfull \vbox (badness 3930) has occurred while \output is active []
-
-
 
 [10]
 
@@ -389,48 +421,49 @@ Underfull \vbox (badness 3930) has occurred while \output is active []
 [11]
 
 
+Underfull \vbox (badness 2384) has occurred while \output is active []
 
-[12])
+
+
+[12]
+
+
+
+[13]) (./sections/05_conclusion.tex
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-(./sections/05_conclusion.tex
-
-[13]) (./00_main.bbl
+[14]) (./00_main.bbl
 Underfull \hbox (badness 2277) in paragraph at lines 24--25
 []\OT1/ptm/m/n/8 J. Carretero-Moya, J. Gismero-Menoyo, A. B. del Campo, and
  []
 
 
 
+)
 
-
-[14])
-
-
-
-[15
-
-] (./00_main.aux)
+[15] (./00_main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4799 strings out of 473190
- 84189 string characters out of 5716852
- 498844 words of memory out of 5000000
- 27969 multiletter control sequences out of 15000+600000
+ 4838 strings out of 473190
+ 86094 string characters out of 5716852
+ 496948 words of memory out of 5000000
+ 28008 multiletter control sequences out of 15000+600000
  595488 words of font info for 110 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 57i,17n,65p,2132b,284s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,17n,65p,2132b,258s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_main.pdf (15 pages, 5984007 bytes).
+Output written on 00_main.pdf (15 pages, 10312878 bytes).
 PDF statistics:
- 2918 PDF objects out of 2984 (max. 8388607)
- 1151 compressed objects within 12 object streams
+ 2979 PDF objects out of 2984 (max. 8388607)
+ 1184 compressed objects within 12 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
