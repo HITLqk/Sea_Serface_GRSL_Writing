@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  3 SEP 2026 20:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  3 SEP 2026 21:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -403,14 +403,25 @@ Package pdftex.def Info: plotcode/facet_echo_generation_flowchart.png  used on i
 
 
 [7]
+<plotcode/CoxMunk_IEEE_plotting_updated/output/Fig_low_moderate_mss_validation.pdf, id=2861, 488.82625pt x 240.9pt>
+File: plotcode/CoxMunk_IEEE_plotting_updated/output/Fig_low_moderate_mss_validation.pdf Graphic file (type pdf)
+<use plotcode/CoxMunk_IEEE_plotting_updated/output/Fig_low_moderate_mss_validation.pdf>
+Package pdftex.def Info: plotcode/CoxMunk_IEEE_plotting_updated/output/Fig_low_moderate_mss_validation.pdf  used on input line 105.
+(pdftex.def)             Requested size: 252.0pt x 124.1917pt.
+
+
+<plotcode/CoxMunk_IEEE_plotting_updated/output_high_sea_state/Fig_high_sea_state_mss_validation.pdf, id=2862, 489.83pt x 219.82124pt>
+File: plotcode/CoxMunk_IEEE_plotting_updated/output_high_sea_state/Fig_high_sea_state_mss_validation.pdf Graphic file (type pdf)
+<use plotcode/CoxMunk_IEEE_plotting_updated/output_high_sea_state/Fig_high_sea_state_mss_validation.pdf>
+Package pdftex.def Info: plotcode/CoxMunk_IEEE_plotting_updated/output_high_sea_state/Fig_high_sea_state_mss_validation.pdf  used on input line 138.
+(pdftex.def)             Requested size: 252.0pt x 113.09012pt.
+
+
+[8 <./plotcode/CoxMunk_IEEE_plotting_updated/output/Fig_low_moderate_mss_validation.pdf>]
 
 
 
-[8]
-
-
-
-[9]
+[9 <./plotcode/CoxMunk_IEEE_plotting_updated/output_high_sea_state/Fig_high_sea_state_mss_validation.pdf>]
 
 
 
@@ -452,18 +463,18 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4838 strings out of 473190
- 86094 string characters out of 5716852
+ 4852 strings out of 473190
+ 87491 string characters out of 5716852
  496948 words of memory out of 5000000
- 28008 multiletter control sequences out of 15000+600000
+ 28022 multiletter control sequences out of 15000+600000
  595488 words of font info for 110 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  57i,17n,65p,2132b,258s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/Latex/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_main.pdf (15 pages, 10312878 bytes).
+Output written on 00_main.pdf (15 pages, 10379288 bytes).
 PDF statistics:
- 2979 PDF objects out of 2984 (max. 8388607)
- 1184 compressed objects within 12 object streams
+ 3042 PDF objects out of 3580 (max. 8388607)
+ 1223 compressed objects within 13 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

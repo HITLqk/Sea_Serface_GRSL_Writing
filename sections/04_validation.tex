@@ -5,6 +5,9 @@ Validation proceeds from global surface statistics to localized curling-wave geo
 
 
 
+
+
+
 \subsection{Global Surface Statistical Validation}
 \label{subsec:global_surface_validation}
 
@@ -13,64 +16,143 @@ This subsection examines whether the generated large-area surfaces retain physic
 Let $\widehat{\eta}(\boldsymbol{k})$ denote the Fourier coefficient of a synthesized surface, and let $k_a$ and $k_c$ be the along- and cross-wind wavenumber components defined in Section~II. The directional and total MSSs and the anisotropy factor are calculated directly from the resolved spectral coefficients as
 \begin{equation}
 \begin{aligned}
-m_a&=\sum_{\boldsymbol{k}}k_a^2\left|\widehat{\eta}(\boldsymbol{k})\right|^2,
-&m_c&=\sum_{\boldsymbol{k}}k_c^2\left|\widehat{\eta}(\boldsymbol{k})\right|^2,\\
+m_a&=\sum_{\boldsymbol{k}}k_a^2
+\left|\widehat{\eta}(\boldsymbol{k})\right|^2,
+&
+m_c&=\sum_{\boldsymbol{k}}k_c^2
+\left|\widehat{\eta}(\boldsymbol{k})\right|^2,
+\\
 m_t&=m_a+m_c,
-&\gamma&=\left(\frac{m_c}{m_a}\right)^{1/2}.
+&
+\gamma&=\left(\frac{m_c}{m_a}\right)^{1/2}.
 \end{aligned}
 \label{eq:validation_mss_metrics}
 \end{equation}
+
 The primary grid uses $\Delta k=k_p/12$ and resolves nonlinear interactions up to $8k_p$. Independent octave tiles then represent the unresolved short-wave bands up to $k_{\max}=1000\pi~\mathrm{rad/m}$. Because the tiles occupy disjoint wavenumber bands, their slope variances are added to the primary-band moments. This multiscale construction includes the gravity--capillary contribution needed for comparison with optical-scale slope statistics without requiring one millimeter-spaced grid over the entire sea-surface domain.
 
 For the low- and moderate-wind experiment, the Cox--Munk reference is evaluated after converting the simulated 10-m wind speed to the 12.5-m wind convention, $U_{12.5}=U_{10}/0.98$. Its directional components are~\cite{cox1954measurement}
 \begin{equation}
 \begin{aligned}
 m_{a,\mathrm{CM}}&=3.16\times10^{-3}U_{12.5},\\
-m_{c,\mathrm{CM}}&=3.00\times10^{-3}+1.92\times10^{-3}U_{12.5}.
+m_{c,\mathrm{CM}}&=3.00\times10^{-3}
++1.92\times10^{-3}U_{12.5}.
 \end{aligned}
 \label{eq:cox_munk_directional_mss}
 \end{equation}
-The comparison additionally includes the direction-resolved IASI values reported by Gu\'erin over their available wind interval and the Hu total-MSS parameterization and representative anisotropy summarized in the generalized slope model~\cite{guerin2023seasurfaceslope,gao2024generalized}. These references are retained separately in the plots; their component-wise arithmetic mean is used only as the accepted implementation's low- and moderate-wind constraint target. Denoting this target by $m_{q,\mathrm{tar}}$ and the uncorrected Modified-Lie moment by $m_{q,\mathrm{raw}}$, the desired moment of each realization is
+
+The comparison is made primarily against observation-derived sea-surface
+slope statistics rather than against MSS values obtained from other
+numerically simulated sea surfaces. Cox--Munk provides an empirical
+wind-dependent slope relation derived from measured ocean-surface
+sun-glitter statistics~\cite{cox1954measurement}. The direction-resolved
+Gu\'erin values are retrieved from IASI observations over their available
+wind interval~\cite{guerin2023seasurfaceslope}, while the Hu/TGRS relation
+represents an observation-based wind-dependent MSS parameterization
+summarized in the generalized sea-surface slope model~\cite{gao2024generalized}.
+Accordingly, these curves are used as measured or empirically retrieved
+statistical references, not as outputs of competing sea-surface simulation
+algorithms.
+
+For comparison, the ``Elfouhaily et al.--Unified spectrum'' curve is of a
+different nature: it is obtained by numerically integrating the directional
+Elfouhaily spectrum implemented in the present generator and therefore serves
+as an internal spectral-consistency reference rather than an independent
+measurement. The component-wise arithmetic mean of the available Cox--Munk,
+Hu/TGRS, and Gu\'erin statistics is used only to construct the low- and
+moderate-wind MSS constraint target and is denoted as the fusion constraint
+below.
+
+
 \begin{equation}
-m_{q,\mathrm{des}}=m_{q,\mathrm{tar}}\left(\frac{m_{q,\mathrm{raw}}}{m_{q,\mathrm{tar}}}\right)^{\rho},\qquad q\in\{a,c\},
+m_{q,\mathrm{des}}
+=
+m_{q,\mathrm{tar}}
+\left(
+\frac{m_{q,\mathrm{raw}}}
+     {m_{q,\mathrm{tar}}}
+\right)^{\rho},
+\qquad q\in\{a,c\},
 \label{eq:mss_log_domain_contraction}
 \end{equation}
-where $\rho=0.15$ retains part of the realization-to-realization deviation. The positive angular dressing in Section~II is then solved to realize $m_{a,\mathrm{des}}$ and $m_{c,\mathrm{des}}$ without changing Fourier phase. The reported groups are therefore a linear Elfouhaily baseline and an MSS-constrained Modified-Lie surface generated with identical random coefficients.
+where $\rho=0.15$ retains part of the realization-to-realization deviation. The positive angular dressing in Section~II is then solved to realize $m_{a,\mathrm{des}}$ and $m_{c,\mathrm{des}}$ without changing Fourier phase. 
+Thus, the two simulated groups evaluated here are the linear Elfouhaily
+realization and the proposed MSS-constrained Modified-Lie realization.
+Cox--Munk, Hu/TGRS, and Gu\'erin are not additional simulated groups; they
+provide observation-derived statistical reference values against which the
+simulated MSS is assessed.
 
-Wind speed is varied from $1$ to $10~\mathrm{m/s}$ in $1~\mathrm{m/s}$ increments, with 20 paired realizations at every wind speed. At each condition, the median is used as the central estimate; the 5th--95th percentile interval and interquartile range describe Monte Carlo dispersion. Agreement with a reference curve $r_i$ is summarized by
+Wind speed is varied from $1$ to $10~\mathrm{m/s}$ in $1~\mathrm{m/s}$ increments, with 20 paired realizations at every wind speed. At each condition, the median is used as the central estimate, while the Monte Carlo spread is retained in the statistical summaries. Agreement with a reference curve $r_i$ is summarized by
 \begin{equation}
-\operatorname{RMSE}=\left[\frac{1}{N_U}\sum_{i=1}^{N_U}\left(\widetilde{m}_{t,i}-r_i\right)^2\right]^{1/2},
+\operatorname{RMSE}
+=
+\left[
+\frac{1}{N_U}
+\sum_{i=1}^{N_U}
+\left(
+\widetilde{m}_{t,i}-r_i
+\right)^2
+\right]^{1/2},
 \label{eq:mss_rmse}
 \end{equation}
-where $\widetilde{m}_{t,i}$ is the median total MSS at the $i$th wind speed. Directional consistency is assessed independently through the mean absolute deviation of $\widetilde{\gamma}$ from the TGRS reference value.
+where $\widetilde{m}_{t,i}$ is the median total MSS at the $i$th wind speed.
 
-\begin{figure*}[!t]
-\centering
-\fbox{\parbox[c][5.0cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for low- and moderate-wind global statistics}\\[5pt] (a) Total MSS of the linear Elfouhaily group, including 5th--95th percentile and interquartile bands, the numerical Elfouhaily integral, Cox--Munk, Hu/TGRS, Gu\'erin IASI, and the empirical fusion target.\\[3pt] (b) Corresponding total MSS of the MSS-constrained Modified-Lie group.\\[3pt] (c) Anisotropy factor $\gamma$ for both groups and the available reference values.}}
-\caption{Global slope statistics for $U_{10}=1$--$10~\mathrm{m/s}$ using 20 paired realizations per wind speed. The fusion curve is the constraint target and is not treated as an additional independent observation.}
-\label{fig:global_mss_low_wind}
-\end{figure*}
+Figure~\ref{fig:global_mss_low_wind} compares the total and directional MSSs over the low- and moderate-wind interval. Plotting $m_a$ and $m_c$ separately is useful because agreement in total MSS alone does not guarantee that the slope variance is distributed correctly between the along- and cross-wind directions.
 
-As shown by the results reserved for Fig.~\ref{fig:global_mss_low_wind}, the linear realizations closely reproduce the numerical integral of the implemented Elfouhaily spectrum, with an RMSE of $7.53\times10^{-4}$. This confirms the self-consistency of the spectral sampling, octave-band accumulation, and MSS calculation. Their total MSS nevertheless increasingly exceeds the Cox--Munk and Gu\'erin references toward the upper end of the interval: the median rises from 0.01846 at $1~\mathrm{m/s}$ to 0.06156 at $10~\mathrm{m/s}$, whereas the corresponding Cox--Munk values are 0.00818 and 0.05484. After directional moment contraction, the nonlinear medians become 0.01221 and 0.05547, respectively, and remain monotonic over the complete wind interval.
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]
+    {plotcode/CoxMunk_IEEE_plotting_updated/output/Fig_low_moderate_mss_validation.pdf}
+    \caption{Low- and moderate-wind MSS comparison for
+    $U_{10}=1$--$10~\mathrm{m/s}$ using 20 paired realizations per wind
+    speed. (a) Total MSS. (b) Along-wind MSS. (c) Crosswind MSS.
+    The two simulated groups are compared with observation-derived
+    Cox--Munk, Hu et al., and Gu\'erin slope statistics. The integrated
+    Elfouhaily curve is a spectrum-based internal reference rather than a
+    measurement, while the fusion curve denotes the statistical constraint
+    used by the proposed model and is not an independent observation.}
+    \label{fig:global_mss_low_wind}
+\end{figure}
+
+As shown in Fig.~\ref{fig:global_mss_low_wind}(a), the linear realizations closely reproduce the numerical integral of the implemented Elfouhaily spectrum, with an RMSE of $7.53\times10^{-4}$. This confirms the self-consistency of the spectral sampling, octave-band accumulation, and MSS calculation. Their total MSS nevertheless increasingly exceeds the Cox--Munk and Gu\'erin references toward the upper end of the interval: the median rises from 0.01846 at $1~\mathrm{m/s}$ to 0.06156 at $10~\mathrm{m/s}$, whereas the corresponding Cox--Munk values are 0.00818 and 0.05484. After directional moment contraction, the nonlinear medians become 0.01221 and 0.05547, respectively, and remain monotonic over the complete wind interval. Figures~\ref{fig:global_mss_low_wind}(b) and \ref{fig:global_mss_low_wind}(c) further show that the correction acts consistently on the along- and cross-wind slope components rather than matching the total MSS through compensation between the two directions.
 
 The quantitative errors exhibit the same behavior. Relative to the linear baseline, the constrained nonlinear group reduces the total-MSS RMSE from 0.00560 to 0.00223 against Cox--Munk, from 0.00523 to 0.00188 against the available Gu\'erin values, and from 0.00383 to 0.00227 against the Hu/TGRS law. Its RMSE relative to the fusion target is $6.28\times10^{-4}$, compared with 0.00456 for the linear group. The mean absolute anisotropy error relative to the TGRS value decreases from 0.04699 to 0.02678. The constrained $\gamma$ changes from 0.948 at $1~\mathrm{m/s}$ to 0.841 at $10~\mathrm{m/s}$; its elevated low-wind value follows partly from the constant crosswind term in the Cox--Munk law and should therefore be interpreted as a property of the adopted directional constraint rather than as an independently predicted nonlinear-wave effect.
 
-The high-sea-state experiment tests a different statistical behavior and does not extrapolate the Cox--Munk linear law into hurricane-force winds. For $U_{10}\geq13.3~\mathrm{m/s}$, the accepted implementation adopts the logarithmic Hu/TGRS branch
+The high-sea-state experiment tests a different statistical behavior.
+No competing numerically simulated sea surface is used as the high-wind
+reference. Instead, the comparison is made with the observation-based
+Hu/TGRS MSS parameterization. The Cox--Munk relation is retained in the
+figure only to illustrate the consequence of linearly extrapolating its
+classical empirical trend beyond the moderate-wind regime. For $U_{10}\geq13.3~\mathrm{m/s}$, the accepted implementation adopts the logarithmic Hu/TGRS branch
 \begin{equation}
-m_{t,\mathrm{Hu}}=0.138\log_{10}U_{10}-0.084,
+m_{t,\mathrm{Hu}}
+=
+0.138\log_{10}U_{10}-0.084,
 \label{eq:hu_high_wind_mss}
 \end{equation}
-while the lower part of this experiment uses its adjacent linear branch. The test covers $U_{10}=10:2:40~\mathrm{m/s}$ with 20 paired realizations per condition and retains $\rho=0.05$. In addition to the linear and constrained groups, the raw Modified-Lie result is reported to expose the effect of the statistical constraint. High-wind behavior is measured by the RMSE to the Hu/TGRS target, the ratio between the mean tail slope above $24~\mathrm{m/s}$ and the early slope below $16~\mathrm{m/s}$, and the fraction of successive slope intervals that are concave.
+while the lower part of this experiment uses its adjacent linear branch. The test covers $U_{10}=10:2:40~\mathrm{m/s}$ with 20 paired realizations per condition and retains $\rho=0.05$. In addition to the linear and constrained groups, the raw Modified-Lie result is reported to expose the effect of the statistical constraint. High-wind behavior is measured by the RMSE to the Hu/TGRS target, the ratio between the mean tail slope above $24~\mathrm{m/s}$ and the early slope below $16~\mathrm{m/s}$, and the fraction of successive slope intervals that are concave. Figure~\ref{fig:global_mss_high_wind} shows both the resulting total MSS and its finite-difference growth rate.
 
-\begin{figure*}[!t]
-\centering
-\fbox{\parbox[c][4.2cm][c]{0.95\textwidth}{\centering \textbf{Placeholder for high-sea-state MSS validation}\\[5pt] (a) Median total MSS for the linear Elfouhaily, raw Modified-Lie, and MSS-constrained Modified-Lie groups, together with the Hu/TGRS law, the integrated Elfouhaily result, and the 5th--95th percentile band of the constrained group.\\[3pt] (b) Finite-difference slope $\mathrm{d}(\mathrm{MSS})/\mathrm{d}U_{10}$ showing the progressive high-wind flattening.}}
-\caption{High-sea-state total MSS and its wind-speed derivative for $U_{10}=10$--$40~\mathrm{m/s}$.}
-\label{fig:global_mss_high_wind}
-\end{figure*}
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]
+    {plotcode/CoxMunk_IEEE_plotting_updated/output_high_sea_state/Fig_high_sea_state_mss_validation.pdf}
+    \caption{High-sea-state MSS behavior for
+    $U_{10}=10$--$40~\mathrm{m/s}$ using 20 paired realizations per wind
+    speed. (a) Median total MSS of the linear Elfouhaily, raw Modified-Lie,
+    and proposed MSS-constrained Lie realizations. The Hu et al. curve is
+    used as the observation-based high-wind MSS reference, the Cox--Munk
+    curve is shown only as a linear empirical extrapolation for comparison,
+    and the integrated Elfouhaily curve is a spectrum-based model reference.
+    The vertical marker at $U_{10}=13.3~\mathrm{m/s}$ denotes the transition
+    to the logarithmic Hu high-wind branch. (b) Finite-difference MSS growth
+    rate $\Delta\mathrm{MSS}/\Delta U_{10}$, illustrating the progressive
+    reduction in wind-speed sensitivity at high sea states.}
+    \label{fig:global_mss_high_wind}
+\end{figure}
 
-The high-wind results reserved for Fig.~\ref{fig:global_mss_high_wind} show that the raw Modified-Lie correction alone changes the total MSS only slightly and yields an RMSE of 0.00911, compared with 0.00900 for the linear realizations and 0.00757 for the continuous Elfouhaily integral. The constrained group reduces this value to $3.96\times10^{-4}$. Its median total MSS increases from 0.05455 at $10~\mathrm{m/s}$ to 0.13754 at $40~\mathrm{m/s}$, remains strictly monotonic, and is concave over all evaluated finite-difference intervals. Its tail-to-early slope ratio is 0.411, indicating that roughness continues to grow while its wind-speed sensitivity decreases. Together, the two experiments show that the multiscale generator reproduces its prescribed spectral slope energy and that the accepted statistical constraint prevents the nonlinear transform from producing unbounded or incorrectly directed MSS over a broad range of sea states. Because the observation-based laws participate in that constraint, these results establish global statistical consistency; the independent validity of the localized nonlinear geometry and its radar consequence is examined next.
+As shown in Fig.~\ref{fig:global_mss_high_wind}(a), the raw Modified-Lie correction alone changes the total MSS only slightly and yields an RMSE of 0.00911, compared with 0.00900 for the linear realizations and 0.00757 for the continuous Elfouhaily integral. The constrained group reduces this value to $3.96\times10^{-4}$. Its median total MSS increases from 0.05455 at $10~\mathrm{m/s}$ to 0.13754 at $40~\mathrm{m/s}$ and remains strictly monotonic. More importantly, Fig.~\ref{fig:global_mss_high_wind}(b) shows that its finite-difference growth rate decreases progressively with increasing wind speed rather than remaining approximately constant as in a linear extrapolation. The resulting tail-to-early slope ratio is 0.411, and all evaluated slope intervals satisfy the adopted concavity criterion.
 
+Together, the two experiments show that the multiscale generator reproduces its prescribed spectral slope energy and that the accepted statistical constraint prevents the nonlinear transform from producing unbounded or incorrectly distributed MSS over a broad range of sea states. Because the observation-based laws participate in that constraint, these results establish global statistical consistency; the independent validity of the localized nonlinear geometry and its radar consequence is examined next.
 
 
 
